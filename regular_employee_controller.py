@@ -1,2 +1,21 @@
+from regular_employee_view import RegularEmployeeView
+import os
+
+
 class RegularEmployeeController():
-    pass
+
+    def __init__(self):
+        self.view = RegularEmployeeView()
+
+    def list_students(self):
+        pass
+
+    def start(self):
+        while True:
+            self.view.display_employees_menu()
+            menu_option = self.view.get_menu_option()
+
+            if menu_option == '1':
+                self.list_students()
+            elif menu_option == '0':
+                exit()
