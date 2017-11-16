@@ -11,4 +11,10 @@ class ManagerView():
 
         print(options)
         print("What would you like to do?")
-        
+
+    def get_menu_option(self):
+        menu_option = input("Enter a number: ")
+        return menu_option
+    
+
+    
