@@ -8,7 +8,8 @@ class ManagerView():
                    '(5) Edit mentor',
                    '(0) Exit CcMS')
         
-        print(options)
+        for option in options:
+            print(option)
         print("What would you like to do?")
 
     def get_menu_option(self):
@@ -28,4 +29,5 @@ class ManagerView():
     def get_mentors_email(self):
         mentors_email = input("Enter mentor's e-mail: ")
         return mentors_email
+
 
