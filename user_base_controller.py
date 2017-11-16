@@ -1,0 +1,2 @@
+class UserBaseController():
+    pass

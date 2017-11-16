@@ -1,0 +1,2 @@
+class UserBaseContainer():
+    pass

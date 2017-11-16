@@ -1,0 +1,2 @@
+class ManagerDao():
+    pass
