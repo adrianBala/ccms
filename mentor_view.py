@@ -27,4 +27,8 @@ class MentorView():
 
         students_data = (students_name, students_surname, students_email, students_phone, students_password, students_class)
         return students_data  # zwraca tuplę
+        
+    def get_students_email(self):
+        students_email = input("Enter student's e-mail: ")
+        return students_email
     
