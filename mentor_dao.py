@@ -1,2 +1,14 @@
+import csv
+from mentor_model import Mentor
+
 class MentorDao():
-    pass
+
+    mentors_file = 'mentors.csv'
+
+    def import_mentors(self):
+        mentors = []
+        with open(self.mentors_file, "r") as csvfile:
+            reader = csv.reader(csvfile)
+            for row in reader:
+                mentors.append(row)
+        return mentors
