@@ -1,2 +1,26 @@
+from student_view import StudentView
+import os
+
+
 class StudentController():
-    pass
+
+    def __init__(self):
+        self.view = StudentView()
+
+    def view_grades(self):
+        pass
+
+    def submit_assignment(self):
+        pass
+
+    def start(self):
+        while True:
+            self.view.display_students_menu()
+            menu_option = self.view.get_menu_option()
+
+            if menu_option == '1':
+                self.view_grades()
+            elif menu_option == '2':
+                self.submit_assignment()
+            elif menu_option == '0':
+                exit()
