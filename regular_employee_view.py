@@ -12,10 +12,5 @@ class RegularEmployeeView():
         return menu_option
 
 
-view = RegularEmployeeView()
-view.display_employees_menu()
-view.get_menu_option()
-
-
     
 

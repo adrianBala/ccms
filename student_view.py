@@ -6,7 +6,7 @@ class StudentView():
                    '(0) Exit CcMS')
         for option in options:
             print(option)
-        print('What would you like to do: ')
+        print('What would you like to do?')
 
     def get_menu_option(self):
         menu_option = input("Enter a number: ")
