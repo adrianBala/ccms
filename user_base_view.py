@@ -6,6 +6,7 @@ class UserBaseView():
 
     def get_password(self):
         user_password = input('Enter password: ')
+        return user_password
 
     def display_text(self, text):
         print(text)
