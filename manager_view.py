@@ -1,5 +1,5 @@
 class ManagerView():
-    
+
     def display_managers_menu(self):
         options = ('(1) List mentors',
                    '(2) List students',
@@ -7,7 +7,7 @@ class ManagerView():
                    '(4) Remove mentor',
                    '(5) Edit mentor',
                    '(0) Exit CcMS')
-        
+
         for option in options:
             print(option)
         print("What would you like to do?")
@@ -16,7 +16,7 @@ class ManagerView():
         menu_option = input("Enter a number: ")
         return menu_option
 
-    def get_mentors_data_from_user(self):
+    def get_mentors_data(self):
         mentors_name = input("Enter mentor's name: ")
         mentors_surname = input("Enter mentor's surname: ")
         mentors_email = input("Enter mentor's e-mail: ")
@@ -29,5 +29,3 @@ class ManagerView():
     def get_mentors_email(self):
         mentors_email = input("Enter mentor's e-mail: ")
         return mentors_email
-
-
