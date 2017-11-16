@@ -12,3 +12,6 @@ class UserBase():
 
     def change_phone_number(self, new_phone_number):
         self. phone_number = new_phone_number
+
+    def change_password(self, new_password):
+        self.password = new_password
