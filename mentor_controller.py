@@ -1,5 +1,6 @@
 from mentor_view import MentorView
 from student_dao import StudentDao
+import os
 
 
 class MentorController():
@@ -12,7 +13,7 @@ class MentorController():
         pass
 
     def add_student(self):
-        student_data = self.view.get_students_data()
+        student_data = self.view.get_students_data_from_user()
         student = self.student_dao.create_student(student_data)
         self.student_dao.export_student(student)
 
@@ -33,7 +34,7 @@ class MentorController():
 
     def start(self):
         while True:
-            self.view.display_menu()
+            self.view.display_mentors_menu()
             menu_option = self.view.get_menu_option()
 
             if menu_option == '1':
@@ -50,3 +51,5 @@ class MentorController():
                 self.grade_assignment()
             elif menu_option == '7':
                 self.check_attendance()
+            elif menu_option == '0':
+                exit()
