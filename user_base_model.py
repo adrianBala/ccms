@@ -9,3 +9,6 @@ class UserBase():
 
     def change_email(new_email):
         self.email = new_email
+
+    def change_phone_number(new_phone_number):
+        self. phone_number = new_phone_number
