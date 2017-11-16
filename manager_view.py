@@ -25,5 +25,7 @@ class ManagerView():
         mentors_data = (mentors_name, mentors_surname, mentors_email, mentors_phone, mentors_password)
         return mentors_data  # zwraca tuplę
 
+    def get_mentors_email(self):
+        mentors_email = input("Enter mentor's e-mail: ")
+        return mentors_email
 
-    
