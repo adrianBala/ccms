@@ -6,3 +6,6 @@ class UserBase():
         self.email = email
         self.phone_number = phone_number
         self.password = password
+
+    def change_email(new_email):
+        self.email = new_email
