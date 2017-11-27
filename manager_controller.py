@@ -6,10 +6,12 @@ from mentor_container import MentorContainer
 
 class ManagerController():
 
-    def __init__(self):
+    def __init__(self, user_base_dao, user_base_container):
         self.view = ManagerView()
         self.mentor_dao = MentorDao()
         self.student_dao = StudentDao()
+        self.user_base_dao = user_base_dao
+        self.user_base_container = user_base_container
 
     def list_mentors(self):
         mentors = self.get_mentor_container().get_mentors()
