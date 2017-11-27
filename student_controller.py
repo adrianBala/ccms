@@ -14,7 +14,8 @@ class StudentController():
         pass
 
     def start(self):
-        while True:
+        end = False
+        while not end:
             self.view.display_students_menu()
             menu_option = self.view.get_menu_option()
 
@@ -23,4 +24,4 @@ class StudentController():
             elif menu_option == '2':
                 self.submit_assignment()
             elif menu_option == '0':
-                exit()
+                end = True

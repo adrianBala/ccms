@@ -11,11 +11,12 @@ class RegularEmployeeController():
         pass
 
     def start(self):
-        while True:
+        end = False
+        while not end:
             self.view.display_employees_menu()
             menu_option = self.view.get_menu_option()
 
             if menu_option == '1':
                 self.list_students()
             elif menu_option == '0':
-                exit()
+                end = True
