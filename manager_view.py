@@ -1,4 +1,10 @@
+from prettytable import PrettyTable
+
 class ManagerView():
+
+    def __init__(self):
+        self.mentors_collection = []
+
 
     def display_managers_menu(self):
         options = ('(1) List mentors',
@@ -29,3 +35,12 @@ class ManagerView():
     def get_mentors_email(self):
         mentors_email = input("Enter mentor's e-mail: ")
         return mentors_email
+
+    def display_mentors(self):
+        my_table = PrettyTable(["NAME", "SURNAME", "E-MAIL", "PHONE"])
+        for mentor in self.mentors_collection:
+            my_table.add_row(mentor)
+        print(my_table)
+        input("\nPress Enter to go back")
+
+        
