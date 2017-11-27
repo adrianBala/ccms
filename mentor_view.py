@@ -14,7 +14,7 @@ class MentorView():
         print('What would you like to do?')
 
     def get_menu_option(self):
-        menu_option = input("Enter a number: ")
+        menu_option = input("Option: ")
         return menu_option
 
     def get_students_data_from_user(self):

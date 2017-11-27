@@ -13,7 +13,7 @@ class ManagerView():
         print("What would you like to do?")
 
     def get_menu_option(self):
-        menu_option = input("Enter a number: ")
+        menu_option = input("Option: ")
         return menu_option
 
     def get_mentors_data(self):
