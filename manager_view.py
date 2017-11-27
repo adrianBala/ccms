@@ -33,7 +33,7 @@ class ManagerView():
         mentors_email = input("Enter mentor's e-mail: ")
         return mentors_email
 
-    def display_mentors(self, mentors_collection ):
+    def display_mentors(self, mentors_collection):
         my_table = PrettyTable(["No.", "NAME", "SURNAME", "E-MAIL", "PHONE"])
         for mentor in mentors_collection:
             my_table.add_row(mentor)
