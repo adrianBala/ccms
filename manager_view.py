@@ -32,3 +32,6 @@ class ManagerView():
     def get_mentors_email(self):
         mentors_email = input("Enter mentor's e-mail: ")
         return mentors_email
+
+    def display_goodbye_message(self):
+        print('\nGoodbye!')

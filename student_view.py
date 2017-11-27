@@ -14,3 +14,6 @@ class StudentView():
     def get_menu_option(self):
         menu_option = input("Option: ")
         return menu_option
+
+    def display_goodbye_message(self):
+        print('\nGoodbye!')

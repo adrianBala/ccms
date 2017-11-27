@@ -56,3 +56,5 @@ class MentorController():
                 self.check_attendance()
             elif menu_option == '0':
                 end = True
+
+        self.view.display_goodbye_message()

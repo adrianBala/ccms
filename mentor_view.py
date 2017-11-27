@@ -34,3 +34,6 @@ class MentorView():
     def get_students_email(self):
         students_email = input("Enter student's e-mail: ")
         return students_email
+
+    def display_goodbye_message(self):
+        print('\nGoodbye!')

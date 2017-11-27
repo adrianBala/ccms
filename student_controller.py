@@ -27,3 +27,5 @@ class StudentController():
                 self.submit_assignment()
             elif menu_option == '0':
                 end = True
+
+        self.view.display_goodbye_message()
