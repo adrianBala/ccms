@@ -6,10 +6,14 @@ class App():
     def __init__(self):
         self.root_controller = RootController()
 
-    def main(self):
+    def run(self):
         self.root_controller.start()
 
 
-if __name__ == '__main__':
+def main():
     app = App()
-    app.main()
+    app.run()
+
+
+if __name__ == '__main__':
+    main()
