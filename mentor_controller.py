@@ -33,7 +33,8 @@ class MentorController():
         pass
 
     def start(self):
-        while True:
+        end = False
+        while not end:
             self.view.display_mentors_menu()
             menu_option = self.view.get_menu_option()
 
@@ -52,4 +53,4 @@ class MentorController():
             elif menu_option == '7':
                 self.check_attendance()
             elif menu_option == '0':
-                exit()
+                end = True
