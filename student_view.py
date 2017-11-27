@@ -1,5 +1,8 @@
 class StudentView():
 
+    def display_welcome_message(self):
+        print('\nWelcome!')
+
     def display_students_menu(self):
         print('\nWhat would you like to do?')
         options = ('(1) View grades',

@@ -1,5 +1,8 @@
 class ManagerView():
 
+    def display_welcome_message(self):
+        print('\nWelcome!')
+
     def display_managers_menu(self):
         print("\nWhat would you like to do?")
         options = ('(1) List mentors',

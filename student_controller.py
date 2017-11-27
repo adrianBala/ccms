@@ -14,6 +14,8 @@ class StudentController():
         pass
 
     def start(self):
+        self.view.display_welcome_message()
+
         end = False
         while not end:
             self.view.display_students_menu()

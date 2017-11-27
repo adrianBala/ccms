@@ -33,6 +33,8 @@ class ManagerController():
         self.mentor_dao.export_mentors(mentors)
 
     def start(self):
+        self.view.display_welcome_message()
+
         end = False
         while not end:
             self.view.display_managers_menu()

@@ -1,5 +1,8 @@
 class MentorView():
 
+    def display_welcome_message(self):
+        print('\nWelcome!')
+
     def display_mentors_menu(self):
         print('\nWhat would you like to do?')
         options = ('(1) List students',

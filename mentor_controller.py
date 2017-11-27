@@ -33,6 +33,8 @@ class MentorController():
         pass
 
     def start(self):
+        self.view.display_welcome_message()
+
         end = False
         while not end:
             self.view.display_mentors_menu()
