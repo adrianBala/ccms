@@ -3,6 +3,7 @@ from mentor_dao import MentorDao
 from student_dao import StudentDao
 from mentor_container import MentorContainer
 
+
 class ManagerController():
 
     def __init__(self):
@@ -32,7 +33,8 @@ class ManagerController():
         self.mentor_dao.export_mentors(mentors)
 
     def start(self):
-        while True:
+        end = False
+        while not end:
             self.view.display_managers_menu()
             menu_option = self.view.get_menu_option()
 
@@ -46,3 +48,5 @@ class ManagerController():
                 self.remove_mentor()
             elif menu_option == '5':
                 self.edit_mentor()
+            elif menu_option == '0':
+                end = True
