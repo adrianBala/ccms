@@ -31,6 +31,15 @@ class ManagerController():
         self.get_mentor_container().add_mentor(mentor)
         mentors = self.get_mentor_container().get_mentors()
         self.mentor_dao.export_mentors(mentors)
+        self.view.display_message("Mentor added!")
+
+    def remove_mentor(self):
+        self.list_mentors()
+        mentors = self.get_mentor_container().get_mentors()
+        index = int(self.view.get_mentor_number(len(mentors))) - 1
+        self.get_mentor_container().remove_mentor(index)
+        self.mentor_dao.export_mentors(mentors)
+        self.view.display_message("Mentor removed!")
 
     def start(self):
         self.view.display_welcome_message()

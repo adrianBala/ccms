@@ -35,3 +35,14 @@ class ManagerView():
 
     def display_goodbye_message(self):
         print('\nGoodbye!')
+
+    def display_message(self, message):
+        print('\n' + message + '\n')
+
+    def get_mentor_number(self, mentor_list_length):
+        correct_choices = [str(n) for n in range(1, mentor_list_length + 1)]
+        user_input = input("Choose mentor to remove : ")
+        while user_input not in correct_choices:
+            print('Wrong input!')
+            user_input = input("Choose mentor to remove : ")
+        return user_input
