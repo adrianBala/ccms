@@ -11,3 +11,6 @@ class MentorContainer():
 
     def add_mentor(self, mentor):
         self.mentors.append(mentor)
+
+    def remove_mentor(self, index):
+        self.mentors.pop(index)
