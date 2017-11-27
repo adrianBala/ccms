@@ -11,3 +11,10 @@ class UserBaseContainer():
 
     def get_login_info(self):
         return self.login_info
+
+    def remove_user(self, email):
+        email_index = 0
+        for login in self.login_info:
+            if login[email_index] = email:
+                self.login_info.remove(login)
+                break
