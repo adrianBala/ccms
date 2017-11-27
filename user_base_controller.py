@@ -11,6 +11,12 @@ class UserBaseController():
         self.dao = UserBaseDao()
         self.container = UserBaseContainer()
 
+    def get_dao(self):
+        return self.dao
+
+    def get_container(self):
+        return self.container
+
     def validate_password(self, email, password, user_email, user_password):
         return email == user_email and password == user_password
 
