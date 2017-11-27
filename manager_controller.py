@@ -44,10 +44,16 @@ class ManagerController():
 
     def remove_mentor(self):
         self.list_mentors()
+
         mentors = self.get_mentor_container().get_mentors()
         index = int(self.view.get_mentor_number(len(mentors))) - 1
-        self.get_mentor_container().remove_mentor(index)
+        mentor = self.get_mentor_container().pop_mentor(index)
         self.mentor_dao.export_mentors(mentors)
+
+        self.user_base_container.remove_user(mentor.get_email())
+        login_info = self.user_base_container.get_login_info()
+        self.user_base_dao.export_login_info(login_info)
+
         self.view.display_message("Mentor removed!")
 
     def start(self):
