@@ -1,16 +1,12 @@
 class RegularEmployeeView():
 
     def display_employees_menu(self):
+        print('\nWhat would you like to do?')
         options = ('(1) List students',
                    '(0) Exit CcMS')
         for option in options:
-            print(option)
-        print('What would you like to do?')
+            print('\t' + option)
 
     def get_menu_option(self):
         menu_option = input("Option: ")
         return menu_option
-
-
-    
-

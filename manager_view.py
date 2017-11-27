@@ -1,6 +1,7 @@
 class ManagerView():
 
     def display_managers_menu(self):
+        print("\nWhat would you like to do?")
         options = ('(1) List mentors',
                    '(2) List students',
                    '(3) Add mentor',
@@ -9,8 +10,7 @@ class ManagerView():
                    '(0) Exit CcMS')
 
         for option in options:
-            print(option)
-        print("What would you like to do?")
+            print('\t' + option)
 
     def get_menu_option(self):
         menu_option = input("Option: ")
@@ -24,7 +24,7 @@ class ManagerView():
         mentors_password = input("Enter mentor's password: ")
 
         mentors_data = (mentors_name, mentors_surname, mentors_email, mentors_phone, mentors_password)
-        return mentors_data  # zwraca tuplę
+        return mentors_data
 
     def get_mentors_email(self):
         mentors_email = input("Enter mentor's e-mail: ")

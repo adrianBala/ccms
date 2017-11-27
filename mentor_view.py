@@ -1,6 +1,7 @@
 class MentorView():
-    
+
     def display_mentors_menu(self):
+        print('\nWhat would you like to do?')
         options = ('(1) List students',
                    '(2) Add student',
                    '(3) Remove student',
@@ -10,8 +11,7 @@ class MentorView():
                    '(7) Check attendance',
                    '(0) Exit CcMS')
         for option in options:
-            print(option)
-        print('What would you like to do?')
+            print('\t' + option)
 
     def get_menu_option(self):
         menu_option = input("Option: ")
@@ -26,9 +26,8 @@ class MentorView():
         students_class = input("Enter student's class: ")
 
         students_data = (students_name, students_surname, students_email, students_phone, students_password, students_class)
-        return students_data  # zwraca tuplę
-        
+        return students_data
+
     def get_students_email(self):
         students_email = input("Enter student's e-mail: ")
         return students_email
-    
