@@ -72,13 +72,13 @@ class ManagerView():
         valid_chars_plus = string.ascii_lowercase + string.digits + '_.-'
         while True:
             email = input("Enter mentor's e-mail: ")
-            if len(email) > 5 and email.isspace() == False and '@' in email and '.' in email:
+            if len(email) >= 5 and email.isspace() == False and '@' in email and '.' in email:
                 chars_to_monkey = email.split('@')[0]
                 chars_after_monkey = email.split('@')[1]
                 if chars_after_monkey.count('.') > 0:
                     chars_before_last_dot = chars_after_monkey.split('.')[0]
                     chars_after_last_dot = chars_after_monkey.split('.')[1]
-                    if len(chars_before_last_dot) > 1 and len(chars_after_last_dot) > 1:
+                    if len(chars_before_last_dot) >= 1 and len(chars_after_last_dot) >= 1:
                         if all(x in valid_chars_plus for x in chars_to_monkey):
                             if all(x in valid_chars for x in chars_after_monkey):
 
