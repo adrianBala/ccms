@@ -35,14 +35,13 @@ class MentorController():
 
     def add_student(self):
         students_data = self.view.get_students_data()
-        students_name, students_surname, students_email, students_phone, students_password, students_class = students_data
 
         student = self.student_dao.create_student(*students_data)
-        self.get_student_container().add_student(student, students_class)
+        self.get_student_container().add_student(student, student.get_class_name())
         students = self.get_student_container().get_students()
         self.student_dao.export_students(students)
 
-        self.user_base_container.add_user(students_email, students_password, 'student')
+        self.user_base_container.add_user(student.get_email(), student.get_password(), 'student')
         login_info = self.user_base_container.get_login_info()
         self.user_base_dao.export_login_info(login_info)
 
