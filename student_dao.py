@@ -1,13 +1,13 @@
 import csv
 from student_model import Student
 
+
 class StudentDao():
 
     students_file = 'students.csv'
 
     def create_student(self, name, surname, email, phone, password, class_name):
-        mentor = Mentor(name, surname, email, phone, password, class_name)
-        return student
+        return Student(name, surname, email, phone, password, class_name)
 
     def import_students(self):
         students = {}
@@ -27,7 +27,7 @@ class StudentDao():
     def export_students(self, students):
         with open(self.students_file, "w") as csvfile:
             writer = csv.writer(csvfile)
-            for student_list in students.values():
+            for students_list in students.values():
                 for student in students_list:
                     name = student.get_name()
                     surname = student.get_surname()
