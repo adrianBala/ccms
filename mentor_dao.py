@@ -5,6 +5,10 @@ class MentorDao():
 
     mentors_file = 'mentors.csv'
 
+    def create_mentor(self, name, surname, email, phone, password):
+        mentor = Mentor(name, surname, email, phone, password)
+        return mentor
+
     def import_mentors(self):
         mentors = []
         with open(self.mentors_file, "r") as csvfile:

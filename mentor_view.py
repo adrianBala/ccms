@@ -37,3 +37,6 @@ class MentorView():
 
     def display_goodbye_message(self):
         print('\nGoodbye!')
+
+    def display_message(self, message):
+        print('\n' + message + '\n')
