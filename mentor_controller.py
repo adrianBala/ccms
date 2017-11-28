@@ -65,7 +65,43 @@ class MentorController():
         self.view.display_message("Student removed!")
 
     def edit_student(self):
-        pass
+        self.list_students()
+
+        students = self.get_student_container().get_all_students()
+        index = int(self.view.get_student_number(len(students))) - 1
+        student = students[index]
+
+        menu_option = None
+        while menu_option != '0':
+            self.view.display_edit_student_menu()
+            menu_option = self.view.get_menu_option()
+
+            if menu_option == '1':
+                new_name = self.view.get_name_or_surname('name')
+                student.set_name(new_name)
+            elif menu_option == '2':
+                new_surname = self.view.get_name_or_surname('surname')
+                student.set_surname(new_surname)
+            elif menu_option == '3':
+                new_email = self.view.get_students_email()
+                student.set_email(new_email)
+            elif menu_option == '4':
+                new_phone_number = self.view.get_tel_number()
+                student.set_phone_number(new_phone_number)
+            elif menu_option == '5':
+                new_password = self.view.get_students_password()
+                student.set_password(new_password)
+            elif menu_option == '6':
+                new_class = self.view.get_students_class()
+                student.set_class_name(new_class)
+
+        self.student_dao.export_students(self.get_student_container().get_students())
+        self.user_base_container.remove_user(student.get_email())
+        self.user_base_container.add_user(student.get_email(), student.get_password(), 'student')
+        login_info = self.user_base_container.get_login_info()
+        self.user_base_dao.export_login_info(login_info)
+
+        self.view.display_message("Student\'s data has been updated!")
 
     def add_assignment(self):
         pass
