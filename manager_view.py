@@ -50,8 +50,8 @@ class ManagerView():
             user_input = input("Choose mentor to remove (by number): ")
         return user_input
 
-    def display_mentors(self, mentors_collection):
+    def display_list(self, collection):
         my_table = PrettyTable(["No.", "NAME", "SURNAME", "E-MAIL", "PHONE"])
-        for mentor in mentors_collection:
-            my_table.add_row(mentor)
+        for user in collection:
+            my_table.add_row(user)
         print(my_table)
