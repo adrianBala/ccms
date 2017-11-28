@@ -27,7 +27,8 @@ class MentorView():
         students_password = input("Enter student's password: ")
         students_class = self.get_students_class()
 
-        students_data = (students_name, students_surname, students_email, students_phone, students_password, students_class)
+        students_data = (students_name, students_surname, students_email,
+                         students_phone, students_password, students_class)
         return students_data  # zwraca tuplę
 
     def get_name_or_surname(self, name_or_surname):
@@ -81,6 +82,7 @@ class MentorView():
         digits = string.digits
         students_class = input("Enter student's class: ")
         if len(students_class) == 2 and students_class[0].isdigit() and students_class[1].isalpha():
-            return students_class[0] + students_class[1].upper()
+            result = students_class[0] + students_class[1].upper()
+            return result
 
         print('\nWrong input. Enter class in format: "XY", where "X" is a single digit and "Y" is a single letter.')
