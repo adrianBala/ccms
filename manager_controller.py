@@ -82,6 +82,42 @@ class ManagerController():
 
         self.view.display_message("Mentor removed!")
 
+    def edit_mentor(self):
+        self.list_mentors()
+
+        mentors = self.get_mentor_container().get_mentors()
+        index = int(self.view.get_mentor_number(len(mentors))) - 1
+        mentor = mentors[index]
+
+        menu_option = None
+        while menu_option != '0':
+            self.view.display_edit_mentor_menu()
+            menu_option = self.view.get_menu_option()
+
+            if menu_option == '1':
+                new_name = self.view.get_name_or_surname('name')
+                mentor.set_name(new_name)
+            elif menu_option == '2':
+                new_surname = self.view.get_name_or_surname('surname')
+                mentor.set_surname(new_surname)
+            elif menu_option == '3':
+                new_email = self.view.get_mentors_email()
+                mentor.set_email(new_email)
+            elif menu_option == '4':
+                new_phone_number = self.view.get_tel_number()
+                mentor.set_phone_number(new_phone_number)
+            elif menu_option == '5':
+                new_password = self.view.get_mentors_password()
+                mentor.set_password(new_password)
+
+        self.mentor_dao.export_mentors(mentors)
+        self.user_base_container.remove_user(mentor.get_email())
+        self.user_base_container.add_user(mentor.get_email(), mentor.get_password(), 'mentor')
+        login_info = self.user_base_container.get_login_info()
+        self.user_base_dao.export_login_info(login_info)
+
+        self.view.display_message("Mentor\'s data has been updated!")
+
     def run(self):
         self.view.display_welcome_message()
 
