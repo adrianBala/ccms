@@ -20,8 +20,24 @@ class ManagerView():
         for option in options:
             print('\t' + option)
 
+    def display_edit_mentor_menu(self):
+        print("\nWhat would you like to do?")
+        options = ('(1) Change mentor\'s name',
+                   '(2) Change mentor\'s surname',
+                   '(3) Change mentor\'s email',
+                   '(4) Change mentor\'s phone number',
+                   '(5) Change mentor\'s password',
+                   '(0) Exit editing mentor\'s data')
+
+        for option in options:
+            print('\t' + option)
+
     def get_menu_option(self):
+        correct_choices = ('0', '1', '2', '3', '4', '5')
         menu_option = input("Option: ")
+        while menu_option not in correct_choices:
+            print('Wrong input!')
+            menu_option = input("Option: ")
         return menu_option
 
     def get_mentors_data(self):
@@ -29,7 +45,7 @@ class ManagerView():
         mentors_surname = self.get_name_or_surname('surname')
         mentors_email = self.get_mentors_email()
         mentors_phone = self.get_tel_number()
-        mentors_password = input("Enter mentor's password: ")
+        mentors_password = self.get_mentors_password()
 
         mentors_data = (mentors_name, mentors_surname, mentors_email, mentors_phone, mentors_password)
         return mentors_data
@@ -56,10 +72,10 @@ class ManagerView():
 
     def get_mentor_number(self, mentor_list_length):
         correct_choices = [str(n) for n in range(1, mentor_list_length + 1)]
-        user_input = input("Choose mentor to remove (by number): ")
+        user_input = input("Choose mentor (by number): ")
         while user_input not in correct_choices:
             print('Wrong input!')
-            user_input = input("Choose mentor to remove (by number): ")
+            user_input = input("Choose mentor (by number): ")
         return user_input
 
     def display_list(self, collection):
@@ -107,3 +123,6 @@ class ManagerView():
                 continue
 
             print('\nWrong input. Enter digits or "+()-".')
+
+    def get_mentors_password(self):
+        return input("Enter mentor's password: ")
