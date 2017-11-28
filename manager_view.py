@@ -22,7 +22,7 @@ class ManagerView():
         mentors_name = self.get_name_or_surname('name')
         mentors_surname = self.get_name_or_surname('surname')
         mentors_email = self.get_mentors_email()
-        mentors_phone = input("Enter mentor's phone: ")
+        mentors_phone = self.get_number()
         mentors_password = input("Enter mentor's password: ")
 
         mentors_data = (mentors_name, mentors_surname, mentors_email, mentors_phone, mentors_password)
@@ -34,20 +34,41 @@ class ManagerView():
             if len(user_input) != 0:
                 if user_input.isspace():
                     print('\nWrong input. Enter at least one "nonspace" letter.')
+
                     continue
+
                 return user_input
+
             print('\nWrong input. Enter at least one character.')
 
     def get_mentors_email(self):
+        valid_chars = string.ascii_lowercase + string.digits + '.'
+        valid_chars_plus = string.ascii_lowercase + string.digits + '_.-'
         while True:
-            chars = string.ascii_lowercase + string.digits + '.'
-            chars_plus = string.ascii_lowercase + string.digits + '_.-'
             email = input("Enter mentor's e-mail: ")
             chars_to_monkey = email.split('@')[0]
             chars_after_monkey = email.split('@')[1]
-            if email.count('@') + chars_after_monkey.count('.') == 2:
-                if all(x in chars_plus for x in chars_to_monkey):
-                    if all(x in chars for x in chars_after_monkey):
-                        return email
+            if email.count('@') == 1 and chars_after_monkey.count('.') == 1:
+                chars_before_last_dot = chars_after_monkey.split('.')[0]
+                chars_after_last_dot = chars_after_monkey.split('.')[1]
+                if len(chars_before_last_dot) > 1 and len(chars_after_last_dot) > 1:
+                    if all(x in valid_chars_plus for x in chars_to_monkey):
+                        if all(x in valid_chars for x in chars_after_monkey):
 
-            print('\nWrong input. Enter email in format: "xxx@xxx.xxx".')
+                            return email
+
+            print('\nWrong input. Enter email in format: "x@x.x".')
+
+    def get_number(self):
+        valid_chars = string.digits + '+()-'
+        while True:
+            telnumber = input("Enter mentor's phone: ")
+            if all(x in valid_chars for x in telnumber):
+                if len(telnumber) >= 9:
+
+                    return telnumber
+
+                print('\nWrong input. Enter at least 9 digits.')
+                continue
+
+            print('\nWrong input. Enter digits or "+()-".')
