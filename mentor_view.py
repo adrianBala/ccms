@@ -32,7 +32,8 @@ class MentorView():
         return students_data  # zwraca tuplę
 
     def get_name_or_surname(self, name_or_surname):
-        while True:
+        loop_is_running = True
+        while loop_is_running:
             user_input = input("Enter student's {}: ".format(name_or_surname))
             if len(user_input) != 0:
                 if user_input.isspace():
@@ -47,7 +48,8 @@ class MentorView():
     def get_students_email(self):
         valid_chars = string.ascii_lowercase + string.digits + '.'
         valid_chars_plus = string.ascii_lowercase + string.digits + '_.-'
-        while True:
+        loop_is_running = True
+        while loop_is_running:
             email = input("Enter student's e-mail: ")
             if len(email) >= 5 and email.isspace() == False and '@' in email and '.' in email:
                 chars_to_monkey = email.split('@')[0]
@@ -65,7 +67,8 @@ class MentorView():
 
     def get_tel_number(self):
         valid_chars = string.digits + '+()-'
-        while True:
+        loop_is_running = True
+        while loop_is_running:
             telnumber = input("Enter mentor's phone: ")
             if all(x in valid_chars for x in telnumber):
                 if sum(c.isdigit() for c in telnumber) >= 9:
@@ -78,7 +81,8 @@ class MentorView():
             print('\nWrong input. Enter digits and "+()-".')
 
     def get_students_class(self):
-        while True:
+        loop_is_running = True
+        while loop_is_running:
             students_class = input("Enter student's class: ")
             if len(students_class) == 2 and students_class[0].isdigit() and students_class[1].isalpha():
                 result = students_class[0] + students_class[1].upper()
