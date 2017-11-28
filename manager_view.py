@@ -33,7 +33,11 @@ class ManagerView():
             print('\t' + option)
 
     def get_menu_option(self):
+        correct_choices = ('0', '1', '2', '3', '4', '5')
         menu_option = input("Option: ")
+        while menu_option not in correct_choices:
+            print('Wrong input!')
+            menu_option = input("Option: ")
         return menu_option
 
     def get_mentors_data(self):
