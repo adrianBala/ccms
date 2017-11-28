@@ -22,7 +22,7 @@ class ManagerView():
         mentors_name = self.get_name_or_surname('name')
         mentors_surname = self.get_name_or_surname('surname')
         mentors_email = self.get_mentors_email()
-        mentors_phone = self.get_number()
+        mentors_phone = self.get_tel_number()
         mentors_password = input("Enter mentor's password: ")
 
         mentors_data = (mentors_name, mentors_surname, mentors_email, mentors_phone, mentors_password)
@@ -46,25 +46,26 @@ class ManagerView():
         valid_chars_plus = string.ascii_lowercase + string.digits + '_.-'
         while True:
             email = input("Enter mentor's e-mail: ")
-            chars_to_monkey = email.split('@')[0]
-            chars_after_monkey = email.split('@')[1]
-            if email.count('@') == 1 and chars_after_monkey.count('.') == 1:
-                chars_before_last_dot = chars_after_monkey.split('.')[0]
-                chars_after_last_dot = chars_after_monkey.split('.')[1]
-                if len(chars_before_last_dot) > 1 and len(chars_after_last_dot) > 1:
-                    if all(x in valid_chars_plus for x in chars_to_monkey):
-                        if all(x in valid_chars for x in chars_after_monkey):
+            if len(email) > 5 and email.isspace() == False and '@' in email and '.' in email:
+                chars_to_monkey = email.split('@')[0]
+                chars_after_monkey = email.split('@')[1]
+                if chars_after_monkey.count('.') > 0:
+                    chars_before_last_dot = chars_after_monkey.split('.')[0]
+                    chars_after_last_dot = chars_after_monkey.split('.')[1]
+                    if len(chars_before_last_dot) > 1 and len(chars_after_last_dot) > 1:
+                        if all(x in valid_chars_plus for x in chars_to_monkey):
+                            if all(x in valid_chars for x in chars_after_monkey):
 
-                            return email
+                                return email
 
             print('\nWrong input. Enter email in format: "x@x.x".')
 
-    def get_number(self):
+    def get_tel_number(self):
         valid_chars = string.digits + '+()-'
         while True:
             telnumber = input("Enter mentor's phone: ")
             if all(x in valid_chars for x in telnumber):
-                if len(telnumber) >= 9:
+                if sum(c.isdigit() for c in telnumber) >= 9:
 
                     return telnumber
 
