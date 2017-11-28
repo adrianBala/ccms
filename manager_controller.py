@@ -16,13 +16,14 @@ class ManagerController():
 
     def list_mentors(self):
         mentors = self.get_mentor_container().get_mentors()
-        mentors_collection = []
-        count = 1
-        for mentor in mentors:
-            mentor_data = [count, mentor.name, mentor.surname, mentor.email, mentor.phone_number]
-            mentors_collection.append(mentor_data)
-            count += 1
-        self.view.display_list(mentors_collection)
+
+        mentors_data_collection = []
+        for count, mentor in enumerate(mentors, 1):
+                mentor_data = [count, mentor.get_name(), mentor.get_surname(),
+                               mentor.get_email(), mentor.get_phone_number()]
+                mentors_data_collection.append(mentor_data)
+
+        self.view.display_list(mentors_data_collection)
 
     def list_students(self):
         students = self.get_student_container().get_all_students()
