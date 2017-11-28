@@ -7,4 +7,4 @@ class Mentor(UserBase):
         super().__init__(name, surname, email, phone_number, password)
 
     def get_all_details(self):
-        return self.name, self.surname, self.email, self.phone_number, self.password
+        return [self.name, self.surname, self.email, self.phone_number, self.password]

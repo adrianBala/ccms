@@ -11,7 +11,7 @@ class Student(UserBase):
         return self.class_name
 
     def get_all_details(self):
-        return self.name, self.surname, self.email, self.phone_number, self.password, self.class_name
+        return [self.name, self.surname, self.email, self.phone_number, self.password, self.class_name]
 
     def set_class_name(self, new_class_name):
         self.class_name = new_class_name
