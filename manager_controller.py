@@ -13,8 +13,13 @@ class ManagerController():
 
     def list_mentors(self):
         mentors = self.get_mentor_container().get_mentors()
+        mentors_collection = []
+        count = 1
         for mentor in mentors:
-            print(mentor)  #to be changed
+            mentor_data = [count, mentor.name, mentor.surname, mentor.email, mentor.phone_number]
+            mentors_collection.append(mentor_data)
+            count += 1
+        self.view.display_mentors(mentors_collection)
 
     def get_mentor_container(self):
         try:

@@ -1,7 +1,12 @@
+from prettytable import PrettyTable
+
 class ManagerView():
 
+<<<<<<< HEAD
     def display_welcome_message(self):
         print('\nWelcome!')
+=======
+>>>>>>> display_mentors
 
     def display_managers_menu(self):
         print("\nWhat would you like to do?")
@@ -33,6 +38,7 @@ class ManagerView():
         mentors_email = input("Enter mentor's e-mail: ")
         return mentors_email
 
+<<<<<<< HEAD
     def display_goodbye_message(self):
         print('\nGoodbye!')
 
@@ -46,3 +52,13 @@ class ManagerView():
             print('Wrong input!')
             user_input = input("Choose mentor to remove : ")
         return user_input
+=======
+    def display_mentors(self, mentors_collection):
+        my_table = PrettyTable(["No.", "NAME", "SURNAME", "E-MAIL", "PHONE"])
+        for mentor in mentors_collection:
+            my_table.add_row(mentor)
+        print(my_table)
+        input("\nPress Enter to go back")
+
+        
+>>>>>>> display_mentors
