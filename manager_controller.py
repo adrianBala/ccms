@@ -56,14 +56,13 @@ class ManagerController():
 
     def add_mentor(self):
         mentors_data = self.view.get_mentors_data()
-        mentors_name, mentors_surname, mentors_email, mentors_phone, mentors_password = mentors_data
 
         mentor = self.mentor_dao.create_mentor(*mentors_data)
         self.get_mentor_container().add_mentor(mentor)
         mentors = self.get_mentor_container().get_mentors()
         self.mentor_dao.export_mentors(mentors)
 
-        self.user_base_container.add_user(mentors_email, mentors_password, 'mentor')
+        self.user_base_container.add_user(mentor.get_email(), mentor.get_password(), 'mentor')
         login_info = self.user_base_container.get_login_info()
         self.user_base_dao.export_login_info(login_info)
 
