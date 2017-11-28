@@ -14,6 +14,24 @@ class ManagerController():
         self.user_base_dao = user_base_dao
         self.user_base_container = user_base_container
 
+    def get_mentor_container(self):
+        try:
+            return self.mentor_container
+        except AttributeError:
+            self.mentor_container = MentorContainer()
+            mentors = self.mentor_dao.import_mentors()
+            self.mentor_container.set_mentors(mentors)
+        return self.mentor_container
+
+    def get_student_container(self):
+        try:
+            return self.student_container
+        except AttributeError:
+            self.student_container = StudentContainer()
+            students = self.student_dao.import_students()
+            self.student_container.set_students(students)
+        return self.student_container
+
     def list_mentors(self):
         mentors = self.get_mentor_container().get_mentors()
 
@@ -35,24 +53,6 @@ class ManagerController():
                 students_data_collection.append(student_data)
 
         self.view.display_list(students_data_collection)
-
-    def get_mentor_container(self):
-        try:
-            return self.mentor_container
-        except AttributeError:
-            self.mentor_container = MentorContainer()
-            mentors = self.mentor_dao.import_mentors()
-            self.mentor_container.set_mentors(mentors)
-        return self.mentor_container
-
-    def get_student_container(self):
-        try:
-            return self.student_container
-        except AttributeError:
-            self.student_container = StudentContainer()
-            students = self.student_dao.import_students()
-            self.student_container.set_students(students)
-        return self.student_container
 
     def add_mentor(self):
         mentors_data = self.view.get_mentors_data()
