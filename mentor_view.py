@@ -28,7 +28,7 @@ class MentorView():
         students_password = input("Enter student's password: ")
         students_class = input("Enter student's class: ")
 
-        students_data = (students_name, students_surname, students_email, students_phone, students_password, students_class)
+        studentrs_data = (students_name, students_surname, students_email, students_phone, students_password, students_class)
         return students_data
 
     def get_students_email(self):
@@ -47,3 +47,11 @@ class MentorView():
             print("Available classes: {}".format(', '.join(class_names)))
             class_name = input('Select class: ')
             return class_name
+
+    def get_student_number(self, student_list_length):
+        correct_choices = [str(n) for n in range(1, len(student_list_length) + 1)]
+        user_input = input("Choose student to remove (by number): ")
+        while user_input not in correct_choices:
+            print('Wrong input!')
+            user_input = input("Choose student to remove (by number): ")
+        return user_input
