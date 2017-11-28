@@ -25,7 +25,7 @@ class MentorView():
         students_email = self.get_students_email()
         students_phone = self.get_tel_number()
         students_password = input("Enter student's password: ")
-        students_class =
+        students_class = self.get_students_class()
 
         students_data = (students_name, students_surname, students_email, students_phone, students_password, students_class)
         return students_data  # zwraca tuplę
