@@ -129,7 +129,7 @@ class MentorView():
         while class_name not in class_names:
             print("Available classes: {}".format(', '.join(class_names)))
             class_name = input('Select class: ')
-            return class_name
+        return class_name
 
     def get_student_number(self, student_list_length):
         correct_choices = [str(n) for n in range(1, student_list_length + 1)]
