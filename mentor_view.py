@@ -30,7 +30,7 @@ class MentorView():
         students_surname = self.get_name_or_surname('surname')
         students_email = self.get_students_email()
         students_phone = self.get_tel_number()
-        students_password = input("Enter student's password: ")
+        students_password = self.get_password()
         students_class = self.get_students_class()
 
         students_data = (students_name, students_surname, students_email, students_phone, students_password, students_class)
@@ -53,18 +53,20 @@ class MentorView():
         print(my_table)
 
     def get_name_or_surname(self, name_or_surname):
-        loop_is_running = True
-        while loop_is_running:
-            user_input = input("Enter student's {}: ".format(name_or_surname))
-            if len(user_input) != 0:
-                if user_input.isspace():
-                    print('\nWrong input. Enter at least one "nonspace" letter.')
-
-                    continue
-
-                return user_input
-
+        user_input = input("Enter mentor's {}: ".format(name_or_surname))
+        while len(user_input) == 0 or user_input.isspace():
             print('\nWrong input. Enter at least one character.')
+            user_input = input("Enter mentor's {}: ".format(name_or_surname))
+
+        return user_input
+
+    def get_password(self):
+        user_input = input("Enter mentor's password: ")
+        while len(user_input) == 0 or user_input.isspace():
+            print('\nWrong input. Enter at least one character.')
+            user_input = input("Enter mentor's password: ")
+
+        return user_input
 
     def get_students_email(self):
         valid_chars = string.ascii_lowercase + string.digits + '.'

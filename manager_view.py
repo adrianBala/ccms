@@ -29,24 +29,26 @@ class ManagerView():
         mentors_surname = self.get_name_or_surname('surname')
         mentors_email = self.get_mentors_email()
         mentors_phone = self.get_tel_number()
-        mentors_password = input("Enter mentor's password: ")
+        mentors_password = self.get_password()
 
         mentors_data = (mentors_name, mentors_surname, mentors_email, mentors_phone, mentors_password)
         return mentors_data
 
-    def get_name_or_surname(self, name_or_surname):
-        loop_is_running = True
-        while loop_is_running:
-            user_input = input("Enter mentor's {}: ".format(name_or_surname))
-            if len(user_input) != 0:
-                if user_input.isspace():
-                    print('\nWrong input. Enter at least one "nonspace" letter.')
-
-                    continue
-
-                return user_input
-
+    def get_password(self):
+        user_input = input("Enter mentor's password: ")
+        while len(user_input) == 0 or user_input.isspace():
             print('\nWrong input. Enter at least one character.')
+            user_input = input("Enter mentor's password: ")
+
+        return user_input 
+
+    def get_name_or_surname(self, name_or_surname):
+        user_input = input("Enter mentor's {}: ".format(name_or_surname))
+        while len(user_input) == 0 or user_input.isspace():
+            print('\nWrong input. Enter at least one character.')
+            user_input = input("Enter mentor's {}: ".format(name_or_surname))
+
+        return user_input
 
     def display_goodbye_message(self):
         print('\nGoodbye!')
