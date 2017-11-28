@@ -1,5 +1,5 @@
+import re
 import string
-
 from prettytable import PrettyTable
 
 
@@ -28,7 +28,7 @@ class MentorView():
     def get_students_data_from_user(self):
         students_name = self.get_name_or_surname('name')
         students_surname = self.get_name_or_surname('surname')
-        students_email = self.get_students_email()
+        students_email = self.get_email()
         students_phone = self.get_tel_number()
         students_password = self.get_password()
         students_class = self.get_students_class()
@@ -68,25 +68,14 @@ class MentorView():
 
         return user_input
 
-    def get_students_email(self):
-        valid_chars = string.ascii_lowercase + string.digits + '.'
-        valid_chars_plus = string.ascii_lowercase + string.digits + '_.-'
-        loop_is_running = True
-        while loop_is_running:
-            email = input("Enter student's e-mail: ")
-            if len(email) >= 5 and email.isspace() == False and '@' in email and '.' in email:
-                chars_to_monkey = email.split('@')[0]
-                chars_after_monkey = email.split('@')[1]
-                if chars_after_monkey.count('.') > 0:
-                    chars_before_last_dot = chars_after_monkey.split('.')[0]
-                    chars_after_last_dot = chars_after_monkey.split('.')[1]
-                    if len(chars_before_last_dot) >= 1 and len(chars_after_last_dot) >= 1:
-                        if all(x in valid_chars_plus for x in chars_to_monkey):
-                            if all(x in valid_chars for x in chars_after_monkey):
-
-                                return email
-
+    def get_email(self):
+        email = input("Enter e-mail: ")
+        pattern = re.compile(r'[a-zA-Z0-9-_]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+')
+        while not pattern.match(email):
             print('\nWrong input. Enter email in format: "x@x.x".')
+            email = input("Enter e-mail: ")
+
+        return email
 
     def get_tel_number(self):
         valid_chars = string.digits + '+()-'
