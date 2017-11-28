@@ -55,10 +55,10 @@ class ManagerView():
 
     def get_mentor_number(self, mentor_list_length):
         correct_choices = [str(n) for n in range(1, mentor_list_length + 1)]
-        user_input = input("Choose mentor to remove (by number): ")
+        user_input = input("Choose mentor (by number): ")
         while user_input not in correct_choices:
             print('Wrong input!')
-            user_input = input("Choose mentor to remove (by number): ")
+            user_input = input("Choose mentor (by number): ")
         return user_input
 
     def display_list(self, collection):
