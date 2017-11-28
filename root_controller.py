@@ -25,4 +25,4 @@ class RootController():
         elif status == 'student':
             self.controller = StudentController()
 
-        self.controller.start()
+        self.controller.run()

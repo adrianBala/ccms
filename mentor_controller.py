@@ -34,7 +34,7 @@ class MentorController():
     def check_attendance(self):
         pass
 
-    def start(self):
+    def run(self):
         self.view.display_welcome_message()
 
         menu_option = None

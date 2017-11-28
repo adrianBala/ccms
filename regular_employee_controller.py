@@ -10,7 +10,7 @@ class RegularEmployeeController():
     def list_students(self):
         pass
 
-    def start(self):
+    def run(self):
         self.view.display_welcome_message()
 
         menu_option = None

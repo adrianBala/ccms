@@ -61,7 +61,7 @@ class ManagerController():
 
         self.view.display_message("Mentor removed!")
 
-    def start(self):
+    def run(self):
         self.view.display_welcome_message()
 
         menu_option = None
