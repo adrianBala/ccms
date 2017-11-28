@@ -13,6 +13,15 @@ class MentorController():
         self.user_base_dao = user_base_dao
         self.user_base_container = user_base_container
 
+    def get_student_container(self):
+        try:
+            return self.student_container
+        except AttributeError:
+            self.student_container = StudentContainer()
+            students = self.student_dao.import_students()
+            self.student_container.set_students(students)
+        return self.student_container
+
     def list_students(self):
         students = self.get_student_container().get_all_students()
 
@@ -23,15 +32,6 @@ class MentorController():
                 students_data_collection.append(student_data)
 
         self.view.display_list(students_data_collection)
-
-    def get_student_container(self):
-        try:
-            return self.student_container
-        except AttributeError:
-            self.student_container = StudentContainer()
-            students = self.student_dao.import_students()
-            self.student_container.set_students(students)
-        return self.student_container
 
     def add_student(self):
         students_data = self.view.get_students_data_from_user()
