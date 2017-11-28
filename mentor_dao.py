@@ -1,13 +1,13 @@
 import csv
 from mentor_model import Mentor
 
+
 class MentorDao():
 
     mentors_file = 'mentors.csv'
 
     def create_mentor(self, name, surname, email, phone, password):
-        mentor = Mentor(name, surname, email, phone, password)
-        return mentor
+        return Mentor(name, surname, email, phone, password)
 
     def import_mentors(self):
         mentors = []
