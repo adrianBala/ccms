@@ -29,7 +29,8 @@ class ManagerView():
         return mentors_data  # zwraca tuplę
 
     def get_name_or_surname(self, name_or_surname):
-        while True:
+        loop_is_running = True
+        while loop_is_running:
             user_input = input("Enter mentor's {}: ".format(name_or_surname))
             if len(user_input) != 0:
                 if user_input.isspace():
@@ -44,15 +45,16 @@ class ManagerView():
     def get_mentors_email(self):
         valid_chars = string.ascii_lowercase + string.digits + '.'
         valid_chars_plus = string.ascii_lowercase + string.digits + '_.-'
-        while True:
+        loop_is_running = True
+        while loop_is_running:
             email = input("Enter mentor's e-mail: ")
-            if len(email) > 5 and email.isspace() == False and '@' in email and '.' in email:
+            if len(email) => 5 and email.isspace() == False and '@' in email and '.' in email:
                 chars_to_monkey = email.split('@')[0]
                 chars_after_monkey = email.split('@')[1]
                 if chars_after_monkey.count('.') > 0:
                     chars_before_last_dot = chars_after_monkey.split('.')[0]
                     chars_after_last_dot = chars_after_monkey.split('.')[1]
-                    if len(chars_before_last_dot) > 1 and len(chars_after_last_dot) > 1:
+                    if len(chars_before_last_dot) => 1 and len(chars_after_last_dot) => 1:
                         if all(x in valid_chars_plus for x in chars_to_monkey):
                             if all(x in valid_chars for x in chars_after_monkey):
 
@@ -62,7 +64,8 @@ class ManagerView():
 
     def get_tel_number(self):
         valid_chars = string.digits + '+()-'
-        while True:
+        loop_is_running = True
+        while loop_is_running:
             telnumber = input("Enter mentor's phone: ")
             if all(x in valid_chars for x in telnumber):
                 if sum(c.isdigit() for c in telnumber) >= 9:
