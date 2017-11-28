@@ -49,13 +49,13 @@ class MentorView():
         valid_chars_plus = string.ascii_lowercase + string.digits + '_.-'
         while True:
             email = input("Enter student's e-mail: ")
-            if len(email) => 5 and email.isspace() == False and '@' in email and '.' in email:
+            if len(email) >= 5 and email.isspace() == False and '@' in email and '.' in email:
                 chars_to_monkey = email.split('@')[0]
                 chars_after_monkey = email.split('@')[1]
                 if chars_after_monkey.count('.') > 0:
                     chars_before_last_dot = chars_after_monkey.split('.')[0]
                     chars_after_last_dot = chars_after_monkey.split('.')[1]
-                    if len(chars_before_last_dot) => 1 and len(chars_after_last_dot) => 1:
+                    if len(chars_before_last_dot) >= 1 and len(chars_after_last_dot) >= 1:
                         if all(x in valid_chars_plus for x in chars_to_monkey):
                             if all(x in valid_chars for x in chars_after_monkey):
 
@@ -78,11 +78,10 @@ class MentorView():
             print('\nWrong input. Enter digits and "+()-".')
 
     def get_students_class(self):
-        letters = string.uppercase
-        digits = string.digits
-        students_class = input("Enter student's class: ")
-        if len(students_class) == 2 and students_class[0].isdigit() and students_class[1].isalpha():
-            result = students_class[0] + students_class[1].upper()
-            return result
+        while True:
+            students_class = input("Enter student's class: ")
+            if len(students_class) == 2 and students_class[0].isdigit() and students_class[1].isalpha():
+                result = students_class[0] + students_class[1].upper()
+                return result
 
-        print('\nWrong input. Enter class in format: "XY", where "X" is a single digit and "Y" is a single letter.')
+            print('\nWrong input. Enter class in format: "XY", where "X" is a single digit and "Y" is a single letter.')
