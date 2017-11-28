@@ -34,7 +34,7 @@ class MentorController():
         self.view.display_list(students_data_collection)
 
     def add_student(self):
-        students_data = self.view.get_students_data_from_user()
+        students_data = self.view.get_students_data()
         students_name, students_surname, students_email, students_phone, students_password, students_class = students_data
 
         student = self.student_dao.create_student(*students_data)

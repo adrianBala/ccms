@@ -38,7 +38,7 @@ class MentorView():
         menu_option = input("Option: ")
         return menu_option
 
-    def get_students_data_from_user(self):
+    def get_students_data(self):
         students_name = self.get_name_or_surname('name')
         students_surname = self.get_name_or_surname('surname')
         students_email = self.get_students_email()
