@@ -1,4 +1,5 @@
 import csv
+from student_model import Student
 
 class StudentDao():
 
@@ -9,5 +10,6 @@ class StudentDao():
         with open(self.students_file, "r") as csvfile:
             reader = csv.reader(csvfile)
             for row in reader:
-                students.append(row)
+                student = Student(*row)
+                students.append(student)
         return students
