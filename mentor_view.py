@@ -53,18 +53,18 @@ class MentorView():
         print(my_table)
 
     def get_name_or_surname(self, name_or_surname):
-        user_input = input("Enter mentor's {}: ".format(name_or_surname))
+        user_input = input("Enter student's {}: ".format(name_or_surname))
         while len(user_input) == 0 or user_input.isspace():
             print('\nWrong input. Enter at least one character.')
-            user_input = input("Enter mentor's {}: ".format(name_or_surname))
+            user_input = input("Enter student's {}: ".format(name_or_surname))
 
         return user_input
 
     def get_password(self):
-        user_input = input("Enter mentor's password: ")
+        user_input = input("Enter student's password: ")
         while len(user_input) == 0 or user_input.isspace():
             print('\nWrong input. Enter at least one character.')
-            user_input = input("Enter mentor's password: ")
+            user_input = input("Enter student's password: ")
 
         return user_input
 
@@ -104,11 +104,9 @@ class MentorView():
             print('\nWrong input. Enter digits and "+()-".')
 
     def get_students_class(self):
-        loop_is_running = True
-        while loop_is_running:
-            students_class = input("Enter student's class: ")
-            if len(students_class) == 2 and students_class[0].isdigit() and students_class[1].isalpha():
-                result = students_class[0] + students_class[1].upper()
-                return result
-
+        students_class = input("Enter student's class: ")
+        while len(students_class) != 2 or not students_class[0].isdigit() or not students_class[1].isalpha():
             print('\nWrong input. Enter class in format: "XY", where "X" is a single digit and "Y" is a single letter.')
+            students_class = input("Enter student's class: ")
+
+        return students_class[0] + students_class[1].upper()
