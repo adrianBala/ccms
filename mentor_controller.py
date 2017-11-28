@@ -1,5 +1,6 @@
 from mentor_view import MentorView
 from student_dao import StudentDao
+from student_container import StudentContainer
 import os
 
 
@@ -14,10 +15,29 @@ class MentorController():
     def list_students(self):
         pass
 
+    def get_student_container(self):
+        try:
+            return self.student_container
+        except AttributeError:
+            self.student_container = StudentContainer()
+            students = self.student_dao.import_students()
+            self.student_container.set_students(students)
+        return self.student_container
+
     def add_student(self):
-        student_data = self.view.get_students_data_from_user()
-        student = self.student_dao.create_student(student_data)
-        self.student_dao.export_student(student)
+        students_data = self.view.get_students_data_from_user()
+        students_name, students_surname, students_email, students_phone, students_password, students_class = students_data
+
+        student = self.student_dao.create_student(*students_data)
+        self.get_student_container().add_student(student, students_class)
+        students = self.get_student_container().get_students()
+        self.student_dao.export_students(students)
+
+        self.user_base_container.add_user(students_email, students_password, 'student')
+        login_info = self.user_base_container.get_login_info()
+        self.user_base_dao.export_login_info(login_info)
+
+        self.view.display_message("Student added!")
 
     def remove_student(self):
         pass
