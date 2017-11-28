@@ -5,6 +5,10 @@ class StudentDao():
 
     students_file = 'students.csv'
 
+    def create_student(self, name, surname, email, phone, password, class_name):
+        mentor = Mentor(name, surname, email, phone, password, class_name)
+        return student
+
     def import_students(self):
         students = {}
         class_index = -1
