@@ -45,7 +45,7 @@ class ManagerView():
         mentors_surname = self.get_name_or_surname('surname')
         mentors_email = self.get_mentors_email()
         mentors_phone = self.get_tel_number()
-        mentors_password = input("Enter mentor's password: ")
+        mentors_password = self.get_mentors_password()
 
         mentors_data = (mentors_name, mentors_surname, mentors_email, mentors_phone, mentors_password)
         return mentors_data
@@ -120,3 +120,6 @@ class ManagerView():
                 continue
 
             print('\nWrong input. Enter digits or "+()-".')
+
+    def get_mentors_password(self):
+        return input("Enter mentor's password: ")
