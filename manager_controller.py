@@ -2,6 +2,7 @@ from manager_view import ManagerView
 from mentor_dao import MentorDao
 from student_dao import StudentDao
 from mentor_container import MentorContainer
+from student_container import StudentContainer
 
 
 class ManagerController():
@@ -23,6 +24,17 @@ class ManagerController():
             count += 1
         self.view.display_list(mentors_collection)
 
+    def list_students(self):
+        students = self.get_student_container().get_students()
+        students_data_collection = []
+        count = 1
+        for student_list in students.values():
+            for student in student_list:
+                student_data = [count, student.name, student.surname, student.email, student.phone_number, student.class_name]
+                students_data_collection.append(student_data)
+                count += 1
+        self.view.display_list(students_data_collection)
+
     def get_mentor_container(self):
         try:
             return self.mentor_container
@@ -31,6 +43,15 @@ class ManagerController():
             mentors = self.mentor_dao.import_mentors()
             self.mentor_container.set_mentors(mentors)
         return self.mentor_container
+
+    def get_student_container(self):
+        try:
+            return self.student_container
+        except AttributeError:
+            self.student_container = StudentContainer()
+            students = self.student_dao.import_students()
+            self.student_container.set_students(students)
+        return self.student_container
 
     def add_mentor(self):
         mentors_data = self.view.get_mentors_data()

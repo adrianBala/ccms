@@ -62,7 +62,12 @@ class ManagerView():
         return user_input
 
     def display_list(self, collection):
-        my_table = PrettyTable(["No.", "NAME", "SURNAME", "E-MAIL", "PHONE"])
+        length_collection_element = 5
+        if len(collection[0]) == length_collection_element:
+            my_table = PrettyTable(["No.", "NAME", "SURNAME", "E-MAIL", "PHONE"])
+        else:
+            my_table = PrettyTable(["No.", "NAME", "SURNAME", "E-MAIL", "PHONE", "CLASS"])
+
         for user in collection:
             my_table.add_row(user)
         print(my_table)

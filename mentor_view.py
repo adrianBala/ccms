@@ -1,3 +1,6 @@
+from prettytable import PrettyTable
+
+
 class MentorView():
 
     def display_welcome_message(self):
@@ -40,3 +43,9 @@ class MentorView():
 
     def display_message(self, message):
         print('\n' + message + '\n')
+
+    def display_list(self, collection):
+        my_table = PrettyTable(["No.", "NAME", "SURNAME", "E-MAIL", "PHONE", "CLASS"])
+        for user in collection:
+            my_table.add_row(user)
+        print(my_table)
