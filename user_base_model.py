@@ -25,6 +25,12 @@ class UserBase():
     def get_password(self):
         return self.password
 
+    def set_name(self, new_name):
+        self.name = new_name
+
+    def set_surname(self, new_surname):
+        self.surname = new_surname
+
     def set_email(self, new_email):
         self.email = new_email
 
