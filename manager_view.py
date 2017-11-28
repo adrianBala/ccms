@@ -20,6 +20,18 @@ class ManagerView():
         for option in options:
             print('\t' + option)
 
+    def display_edit_mentor_menu(self):
+        print("\nWhat would you like to do?")
+        options = ('(1) Change mentor\'s name',
+                   '(2) Change mentor\'s surname',
+                   '(3) Change mentor\'s email',
+                   '(4) Change mentor\'s phone number',
+                   '(5) Change mentor\'s password',
+                   '(0) Exit editing mentor\'s data')
+
+        for option in options:
+            print('\t' + option)
+
     def get_menu_option(self):
         menu_option = input("Option: ")
         return menu_option
