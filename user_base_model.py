@@ -7,9 +7,6 @@ class UserBase():
         self.phone_number = phone_number
         self.password = password
 
-    def __str__(self):
-        return '{} {} {} {}'.format(self.name, self.surname, self.email, self.phone_number)
-
     def get_name(self):
         return self.name
 
