@@ -12,7 +12,11 @@ class StudentView():
             print('\t' + option)
 
     def get_menu_option(self):
+        correct_choices = ('0', '1', '2')
         menu_option = input("Option: ")
+        while menu_option not in correct_choices:
+            print('Wrong input!')
+            menu_option = input("Option: ")
         return menu_option
 
     def display_goodbye_message(self):
