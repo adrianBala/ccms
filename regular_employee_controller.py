@@ -11,17 +11,6 @@ class RegularEmployeeController():
         self.view = RegularEmployeeView()
         self.student_dao = StudentDao()
 
-    def list_students(self):
-        students = self.get_student_container().get_students()
-        students_data_collection = []
-        count = 1
-        for student_list in students.values():
-            for student in student_list:
-                student_data = [count, student.name, student.surname, student.email, student.phone_number, student.class_name]
-                students_data_collection.append(student_data)
-                count += 1
-        self.view.display_list(students_data_collection)
-
     def get_student_container(self):
         try:
             return self.student_container
@@ -30,6 +19,17 @@ class RegularEmployeeController():
             students = self.student_dao.import_students()
             self.student_container.set_students(students)
         return self.student_container
+
+    def list_students(self):
+        students = self.get_student_container().get_all_students()
+
+        students_data_collection = []
+        for count, student in enumerate(students, 1):
+                student_data = [count, student.get_name(), student.get_surname(),
+                                student.get_email(), student.get_phone_number(), student.get_class_name()]
+                students_data_collection.append(student_data)
+
+        self.view.display_list(students_data_collection)
 
     def run(self):
         self.view.display_welcome_message()
