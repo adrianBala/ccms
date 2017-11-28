@@ -15,7 +15,7 @@ class StudentDao():
         with open(self.students_file, "r") as csvfile:
             reader = csv.reader(csvfile)
             for row in reader:
-                student = create_student(*row)
+                student = self.create_student(*row)
                 class_name = student.get_class_name()
 
                 if class_name in students:
