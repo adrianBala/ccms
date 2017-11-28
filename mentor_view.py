@@ -110,3 +110,17 @@ class MentorView():
                 return result
 
             print('\nWrong input. Enter class in format: "XY", where "X" is a single digit and "Y" is a single letter.')
+    def get_class_name(self, class_names):
+        class_name = ''
+        while class_name not in class_names:
+            print("Available classes: {}".format(', '.join(class_names)))
+            class_name = input('Select class: ')
+            return class_name
+
+    def get_student_number(self, student_list_length):
+        correct_choices = [str(n) for n in range(1, len(student_list_length) + 1)]
+        user_input = input("Choose student (by number): ")
+        while user_input not in correct_choices:
+            print('Wrong input!')
+            user_input = input("Choose student (by number): ")
+        return user_input

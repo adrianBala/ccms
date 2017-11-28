@@ -57,7 +57,21 @@ class MentorController():
         self.view.display_message("Student added!")
 
     def remove_student(self):
-        pass
+        self.list_students()
+
+        students = self.get_student_container().get_students()
+        class_names = self.get_student_container().get_class_names()
+        class_name = self.view.get_class_name(class_names)
+        student_list_length = self.get_student_container().get_students_of_class(class_name)
+        index = int(self.view.get_student_number(student_list_length)) - 1
+        student = self.get_student_container().pop_student(class_name, index)
+        self.student_dao.export_students(students)
+
+        self.user_base_container.remove_user(student.get_email())
+        login_info = self.user_base_container.get_login_info()
+        self.user_base_dao.export_login_info(login_info)
+
+        self.view.display_message("Student removed!")
 
     def edit_student(self):
         pass
