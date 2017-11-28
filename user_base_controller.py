@@ -21,13 +21,13 @@ class UserBaseController():
         return email == user_email and password == user_password
 
     def sign_in(self):
+        login_info = self.dao.import_login_info()
+        self.container.set_login_info(login_info)
+
         signed_in = False
         while not signed_in:
             user_email = self.view.get_email()
             user_password = self.view.get_password()
-
-            login_info = self.dao.import_login_info()
-            self.container.set_login_info(login_info)
 
             for row in self.container.get_login_info():
                 email, password, status = row
