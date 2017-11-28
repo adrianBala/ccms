@@ -21,6 +21,19 @@ class MentorView():
         for option in options:
             print('\t' + option)
 
+    def display_edit_student_menu(self):
+        print("\nWhat would you like to do?")
+        options = ('(1) Change student\'s name',
+                   '(2) Change student\'s surname',
+                   '(3) Change student\'s email',
+                   '(4) Change student\'s phone number',
+                   '(5) Change student\'s password',
+                   '(6) Change student\'s class',
+                   '(0) Exit editing student\'s data')
+
+        for option in options:
+            print('\t' + option)
+
     def get_menu_option(self):
         menu_option = input("Option: ")
         return menu_option
