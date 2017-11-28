@@ -1,8 +1,8 @@
 from manager_view import ManagerView
-from mentor_dao import MentorDao
-from student_dao import StudentDao
 from mentor_container import MentorContainer
+from mentor_dao import MentorDao
 from student_container import StudentContainer
+from student_dao import StudentDao
 
 
 class ManagerController():

@@ -1,7 +1,8 @@
+import os
+
 from regular_employee_view import RegularEmployeeView
 from student_container import StudentContainer
 from student_dao import StudentDao
-import os
 
 
 class RegularEmployeeController():

@@ -1,5 +1,6 @@
-from student_view import StudentView
 import os
+
+from student_view import StudentView
 
 
 class StudentController():

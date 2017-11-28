@@ -1,7 +1,7 @@
-from user_base_model import UserBase
-from user_base_dao import UserBaseDao
-from user_base_view import UserBaseView
 from user_base_container import UserBaseContainer
+from user_base_dao import UserBaseDao
+from user_base_model import UserBase
+from user_base_view import UserBaseView
 
 
 class UserBaseController():
