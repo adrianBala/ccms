@@ -43,7 +43,7 @@ class MentorView():
         students_surname = self.get_name_or_surname('surname')
         students_email = self.get_students_email()
         students_phone = self.get_tel_number()
-        students_password = input("Enter student's password: ")
+        students_password = self.get_students_password()
         students_class = self.get_students_class()
 
         students_data = (students_name, students_surname, students_email, students_phone, students_password, students_class)
@@ -123,6 +123,7 @@ class MentorView():
                 return result
 
             print('\nWrong input. Enter class in format: "XY", where "X" is a single digit and "Y" is a single letter.')
+
     def get_class_name(self, class_names):
         class_name = ''
         while class_name not in class_names:
@@ -137,3 +138,6 @@ class MentorView():
             print('Wrong input!')
             user_input = input("Choose student (by number): ")
         return user_input
+
+    def get_students_password(self):
+        return input("Enter student's password: ")
