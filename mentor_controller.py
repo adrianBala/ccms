@@ -32,15 +32,6 @@ class MentorController():
             self.student_container.set_students(students)
         return self.student_container
 
-    def get_student_container(self):
-        try:
-            return self.student_container
-        except AttributeError:
-            self.student_container = StudentContainer()
-            students = self.student_dao.import_students()
-            self.student_container.set_students(students)
-        return self.student_container
-
     def add_student(self):
         students_data = self.view.get_students_data_from_user()
         students_name, students_surname, students_email, students_phone, students_password, students_class = students_data
