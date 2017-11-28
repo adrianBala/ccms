@@ -5,9 +5,11 @@ import os
 
 class MentorController():
 
-    def __init__(self):
+    def __init__(self, user_base_dao, user_base_container):
         self.view = MentorView()
         self.student_dao = StudentDao()
+        self.user_base_dao = user_base_dao
+        self.user_base_container = user_base_container
 
     def list_students(self):
         pass
