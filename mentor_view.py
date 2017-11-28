@@ -40,3 +40,10 @@ class MentorView():
 
     def display_message(self, message):
         print('\n' + message + '\n')
+
+    def get_class_name(self, class_names):
+        class_name = ''
+        while class_name not in class_names:
+            print("Available classes: {}".format(', '.join(class_names)))
+            class_name = input('Select class: ')
+            return class_name
