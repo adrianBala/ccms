@@ -9,7 +9,7 @@ class StudentContainer():
     def get_all_students(self):
         all_students = []
         for student_list in self.students.values():
-            all_studenst.extend(student_list)
+            all_students.extend(student_list)
         return all_students
 
     def get_students_of_class(self, class_name):
