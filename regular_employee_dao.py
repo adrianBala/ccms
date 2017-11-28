@@ -1,2 +1,0 @@
-class RegularEmployeeDao():
-    pass
