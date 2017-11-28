@@ -9,7 +9,6 @@ class UserBaseDao():
             reader = csv.reader(csvfile)
             login_info = []
             for row in reader:
-                uid, login, password = row
                 login_info.append(row)
             return login_info
 
