@@ -50,14 +50,6 @@ class ManagerView():
         mentors_data = (mentors_name, mentors_surname, mentors_email, mentors_phone, mentors_password)
         return mentors_data
 
-    def get_password(self):
-        user_input = input("Enter mentor's password: ")
-        while len(user_input) == 0 or user_input.isspace():
-            print('\nWrong input. Enter at least one character.')
-            user_input = input("Enter mentor's password: ")
-
-        return user_input
-
     def get_name_or_surname(self, name_or_surname):
         user_input = input("Enter mentor's {}: ".format(name_or_surname))
         while len(user_input) == 0 or user_input.isspace():
@@ -65,31 +57,6 @@ class ManagerView():
             user_input = input("Enter mentor's {}: ".format(name_or_surname))
 
         return user_input
-
-    def display_goodbye_message(self):
-        print('\nGoodbye!')
-
-    def display_message(self, message):
-        print('\n' + message + '\n')
-
-    def get_mentor_number(self, mentor_list_length):
-        correct_choices = [str(n) for n in range(1, mentor_list_length + 1)]
-        user_input = input("Choose mentor (by number): ")
-        while user_input not in correct_choices:
-            print('Wrong input!')
-            user_input = input("Choose mentor (by number): ")
-        return user_input
-
-    def display_list(self, collection):
-        length_collection_element = 5
-        if len(collection[0]) == length_collection_element:
-            my_table = PrettyTable(["No.", "NAME", "SURNAME", "E-MAIL", "PHONE"])
-        else:
-            my_table = PrettyTable(["No.", "NAME", "SURNAME", "E-MAIL", "PHONE", "CLASS"])
-
-        for user in collection:
-            my_table.add_row(user)
-        print(my_table)
 
     def get_email(self):
         email = input("Enter mentor's e-mail: ")
@@ -108,3 +75,36 @@ class ManagerView():
             telnumber = input("Enter mentor's phone: ")
             print('\nWrong input. Enter digits or "+()-".')
         return telnumber
+
+    def get_password(self):
+        user_input = input("Enter mentor's password: ")
+        while len(user_input) == 0 or user_input.isspace():
+            print('\nWrong input. Enter at least one character.')
+            user_input = input("Enter mentor's password: ")
+
+        return user_input
+
+    def display_list(self, collection):
+        length_collection_element = 5
+        if len(collection[0]) == length_collection_element:
+            my_table = PrettyTable(["No.", "NAME", "SURNAME", "E-MAIL", "PHONE"])
+        else:
+            my_table = PrettyTable(["No.", "NAME", "SURNAME", "E-MAIL", "PHONE", "CLASS"])
+
+        for user in collection:
+            my_table.add_row(user)
+        print(my_table)
+
+    def get_mentor_number(self, mentor_list_length):
+        correct_choices = [str(n) for n in range(1, mentor_list_length + 1)]
+        user_input = input("Choose mentor (by number): ")
+        while user_input not in correct_choices:
+            print('Wrong input!')
+            user_input = input("Choose mentor (by number): ")
+        return user_input
+
+    def display_message(self, message):
+        print('\n' + message + '\n')
+
+    def display_goodbye_message(self):
+        print('\nGoodbye!')

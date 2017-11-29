@@ -49,35 +49,11 @@ class MentorView():
         students_data = (students_name, students_surname, students_email, students_phone, students_password, students_class)
         return students_data
 
-    def get_students_email(self):
-        students_email = input("Enter student's e-mail: ")
-        return students_email
-
-    def display_goodbye_message(self):
-        print('\nGoodbye!')
-
-    def display_message(self, message):
-        print('\n' + message + '\n')
-
-    def display_list(self, collection):
-        my_table = PrettyTable(["No.", "NAME", "SURNAME", "E-MAIL", "PHONE", "CLASS"])
-        for user in collection:
-            my_table.add_row(user)
-        print(my_table)
-
     def get_name_or_surname(self, name_or_surname):
         user_input = input("Enter student's {}: ".format(name_or_surname))
         while len(user_input) == 0 or user_input.isspace():
             print('\nWrong input. Enter at least one character.')
             user_input = input("Enter student's {}: ".format(name_or_surname))
-
-        return user_input
-
-    def get_password(self):
-        user_input = input("Enter student's password: ")
-        while len(user_input) == 0 or user_input.isspace():
-            print('\nWrong input. Enter at least one character.')
-            user_input = input("Enter student's password: ")
 
         return user_input
 
@@ -99,6 +75,14 @@ class MentorView():
 
         return telnumber
 
+    def get_password(self):
+        user_input = input("Enter student's password: ")
+        while len(user_input) == 0 or user_input.isspace():
+            print('\nWrong input. Enter at least one character.')
+            user_input = input("Enter student's password: ")
+
+        return user_input
+
     def get_students_class(self):
         students_class = input("Enter student's class: ")
         while len(students_class) != 2 or not students_class[0].isdigit() or not students_class[1].isalpha():
@@ -106,12 +90,11 @@ class MentorView():
             students_class = input("Enter student's class: ")
             print('\nWrong input. Enter class in format: "XY", where "X" is a single digit and "Y" is a single letter.')
 
-    def get_class_name(self, class_names):
-        class_name = ''
-        while class_name not in class_names:
-            print("Available classes: {}".format(', '.join(class_names)))
-            class_name = input('Select class: ')
-        return class_name
+    def display_list(self, collection):
+        my_table = PrettyTable(["No.", "NAME", "SURNAME", "E-MAIL", "PHONE", "CLASS"])
+        for user in collection:
+            my_table.add_row(user)
+        print(my_table)
 
     def get_student_number(self, student_list_length):
         correct_choices = [str(n) for n in range(1, student_list_length + 1)]
@@ -120,3 +103,16 @@ class MentorView():
             print('Wrong input!')
             user_input = input("Choose student (by number): ")
         return user_input
+
+    def get_class_name(self, class_names):
+        class_name = ''
+        while class_name not in class_names:
+            print("Available classes: {}".format(', '.join(class_names)))
+            class_name = input('Select class: ')
+        return class_name
+
+    def display_message(self, message):
+        print('\n' + message + '\n')
+
+    def display_goodbye_message(self):
+        print('\nGoodbye!')
