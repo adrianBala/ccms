@@ -1,5 +1,8 @@
+import hashlib, uuid
 import re
 import string
+
+from getpass import getpass
 from prettytable import PrettyTable
 
 
@@ -38,6 +41,7 @@ class ManagerView():
         while menu_option not in correct_choices:
             print('Wrong input!')
             menu_option = input("Option: ")
+
         return menu_option
 
     def get_mentors_data(self):
@@ -47,7 +51,8 @@ class ManagerView():
         mentors_phone = self.get_tel_number()
         mentors_password = self.get_password()
 
-        mentors_data = (mentors_name, mentors_surname, mentors_email, mentors_phone, mentors_password)
+        mentors_data = (mentors_name, mentors_surname, mentors_email,
+                        mentors_phone, self.hash_password(mentors_password))
         return mentors_data
 
     def get_name_or_surname(self, name_or_surname):
@@ -76,13 +81,23 @@ class ManagerView():
             print('\nWrong input. Enter digits or "+()-".')
         return telnumber
 
-    def get_password(self):
-        user_input = input("Enter mentor's password: ")
-        while len(user_input) == 0 or user_input.isspace():
+    def create_password(self, txt):
+        new_password = getpass(txt)
+        while len(new_password) == 0 or new_password.isspace():
             print('\nWrong input. Enter at least one character.')
-            user_input = input("Enter mentor's password: ")
+            new_password = getpass(txt)
 
-        return user_input
+        return new_password
+
+    def get_password(self):
+        new_password = self.create_password("Enter mentor's password: ")
+        retyped_new_password = self.create_password("Retype mentors's password: ")
+        while new_password != retyped_new_password:
+            print('\nTyped inputs are incorrects. Try again.')
+            new_password = self.create_password("Enter mentor's password: ")
+            retyped_new_password = self.create_password("Retype mentors's password: ")
+
+        return new_password
 
     def display_list(self, collection):
         length_collection_element = 5
@@ -102,6 +117,11 @@ class ManagerView():
             print('Wrong input!')
             user_input = input("Choose mentor (by number): ")
         return user_input
+
+    def hash_password(self, password):
+        hashed_password = hashlib.sha512(password.encode('utf-8')).hexdigest()
+
+        return hashed_password
 
     def display_message(self, message):
         print('\n' + message + '\n')

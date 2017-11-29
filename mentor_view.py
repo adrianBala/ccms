@@ -1,5 +1,8 @@
+import hashlib, uuid
 import re
 import string
+
+from getpass import getpass
 from prettytable import PrettyTable
 
 
@@ -46,7 +49,9 @@ class MentorView():
         students_password = self.get_password()
         students_class = self.get_students_class()
 
-        students_data = (students_name, students_surname, students_email, students_phone, students_password, students_class)
+        students_data = (students_name, students_surname, students_email,
+                         students_phone, self.hash_password(students_password), students_class)
+
         return students_data
 
     def get_name_or_surname(self, name_or_surname):
@@ -75,13 +80,23 @@ class MentorView():
 
         return telnumber
 
-    def get_password(self):
-        user_input = input("Enter student's password: ")
-        while len(user_input) == 0 or user_input.isspace():
+    def create_password(self, txt):
+        new_password = getpass(txt)
+        while len(new_password) == 0 or new_password.isspace():
             print('\nWrong input. Enter at least one character.')
-            user_input = input("Enter student's password: ")
+            new_password = getpass(txt)
 
-        return user_input
+        return new_password
+
+    def get_password(self):
+        new_password = self.create_password("Enter student's password: ")
+        retyped_new_password = self.create_password("Retype students's password: ")
+        while new_password != retyped_new_password:
+            print('\nTyped inputs are incorrects. Try again.')
+            new_password = self.create_password("Enter student's password: ")
+            retyped_new_password = self.create_password("Retype student's password: ")
+
+        return new_password
 
     def get_students_class(self):
         students_class = input("Enter student's class: ")
@@ -118,6 +133,11 @@ class MentorView():
             print('\nWrong input. Enter at least one character.')
             user_input = input("Enter the name of new assignment: ")
         return user_input
+
+    def hash_password(self, password):
+        hashed_password = hashlib.sha512(password.encode('utf-8')).hexdigest()
+
+        return hashed_password
 
     def display_message(self, message):
         print('\n' + message + '\n')
