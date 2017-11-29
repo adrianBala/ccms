@@ -37,7 +37,13 @@ class StudentController():
         self.view.display_assignments(self.list_student_assignments())
 
     def submit_assignment(self):
-        pass
+        assignments = self.get_assignment_container().get_assignments_of_student(self.email)
+        self.view.display_assignments(self.list_student_assignments())
+        assignment_number = int(self.view.get_assignment_number(len(assignments))) - 1
+        assignment = assignments[assignment_number]
+        url = self.view.get_url()
+        assignment.set_url(url)
+        self.assignment_dao.export_assignments(self.assignment_container.get_assignments())
 
     def run(self):
         self.view.display_welcome_message()
