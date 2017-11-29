@@ -8,3 +8,9 @@ class AssignmentContainer():
 
     def add_assignment(self, assignment):
         self.assignments.append(assignment)
+
+    def remove_assignments(self, email):
+        for assignment in self.assignments:
+            if assignment.get_email() == email:
+                self.assignments.remove(assignment)
+                break
