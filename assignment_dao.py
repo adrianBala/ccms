@@ -23,11 +23,3 @@ class AssignmentDao():
             writer = csv.writer(csvfile)
             for assignment in assignments:
                 writer.writerow(assignment.get_all_details())
-
-    def get_student_assignments(self, email):
-        assignments = self.import_assignments()
-        student_assignments = []
-        for assignment in assignments:
-            if assignment.get_email() == email:
-                student_assignments.append(assignment)
-        return student_assignments
