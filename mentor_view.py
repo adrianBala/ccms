@@ -112,6 +112,12 @@ class MentorView():
             class_name = input('Select class: ')
         return class_name
 
+    def get_assignment_name(self):
+        user_input = input("Enter the name of new assignment: ")
+        while len(user_input) == 0 or user_input.isspace():
+            print('\nWrong input. Enter at least one character.')
+            user_input = input("Enter the name of new assignment: ")
+
     def display_message(self, message):
         print('\n' + message + '\n')
 
