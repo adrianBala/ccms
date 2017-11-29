@@ -124,6 +124,9 @@ class MentorView():
         elif attendance == 'L':
             return 'late'
 
+    def display_attendance_value(self, name, surname, attendance_vlaue):
+        return print('{} {} presence is: {}%'.format(name, surname, attendance_vlaue))
+
     def display_message(self, message):
         print('\n' + message + '\n')
 
