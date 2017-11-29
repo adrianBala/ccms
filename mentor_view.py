@@ -112,6 +112,18 @@ class MentorView():
             class_name = input('Select class: ')
         return class_name
 
+    def get_attendance(self, name, surname):
+        attendance = None
+        while attendance not in ['Y', 'N', 'L']:
+            print('Is {} {} with us?'.format(name, surname))
+            attendance = input('Enter Yes or No(Y/N/L): ').upper()
+        if attendance == 'Y':
+            return 'persence'
+        elif attendance == 'N':
+            return 'absence'
+        elif attendance == 'L':
+            return 'late'
+
     def display_message(self, message):
         print('\n' + message + '\n')
 
