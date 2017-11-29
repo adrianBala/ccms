@@ -1,5 +1,7 @@
 import os
 
+from assignment_container import AssignmentContainer
+from assignment_dao import AssignmentDao
 from mentor_view import MentorView
 from student_container import StudentContainer
 from student_dao import StudentDao
@@ -10,6 +12,8 @@ class MentorController():
     def __init__(self, user_base_dao, user_base_container):
         self.view = MentorView()
         self.student_dao = StudentDao()
+        self.assignment_dao = AssignmentDao()
+        self.assignment_container = AssignmentContainer
         self.user_base_dao = user_base_dao
         self.user_base_container = user_base_container
 
