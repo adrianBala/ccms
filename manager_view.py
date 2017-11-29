@@ -1,7 +1,9 @@
 import re
 import string
-from prettytable import PrettyTable
+
 from getpass import getpass
+from prettytable import PrettyTable
+
 
 class ManagerView():
 
@@ -76,19 +78,21 @@ class ManagerView():
             print('\nWrong input. Enter digits or "+()-".')
         return telnumber
 
+    def create_password(self, txt):
+        new_password = getpass(txt)
+        while len(new_password) == 0 or new_password.isspace():
+            print('\nWrong input. Enter at least one character.')
+            new_password = getpass(txt)
+
+        return new_password
+
     def get_password(self):
-        new_password = ' '
-        retyped_new_password = ''
+        new_password = self.create_password("Enter mentor's password: ")
+        retyped_new_password = self.create_password("Retype mentors's password: ")
         while new_password != retyped_new_password:
-            if retyped_new_password != '': print('\nTyped inputs are incorrects. Try again.')
-            new_password = getpass("Enter mentor's password: ")
-            while len(new_password) == 0 or new_password.isspace():
-                print('\nWrong input. Enter at least one character.')
-                new_password = getpass("Enter mentor's password: ")
-            retyped_new_password = getpass("Retype mentor's password: ")
-            while len(retyped_new_password) == 0 or retyped_new_password.isspace():
-                print('\nWrong input. Enter at least one character.')
-                retyped_new_password = getpass("Retype mentor's password: ")
+            print('\nTyped inputs are incorrects. Try again.')
+            new_password = self.create_password("Enter mentor's password: ")
+            retyped_new_password = self.create_password("Retype mentors's password: ")
 
         return new_password
 
