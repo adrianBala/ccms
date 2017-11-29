@@ -1,6 +1,7 @@
 import re
 import string
 
+from getpass import getpass
 from prettytable import PrettyTable
 
 
