@@ -94,8 +94,12 @@ class MentorController():
                 new_password = self.view.get_students_password()
                 student.set_password(new_password)
             elif menu_option == '6':
+                old_class = student.get_class_name()
+                self.get_student_container().remove_student(student, old_class)
+
                 new_class = self.view.get_students_class()
                 student.set_class_name(new_class)
+                self.get_student_container().add_student(student, new_class)
 
         self.student_dao.export_students(self.get_student_container().get_students())
         self.user_base_container.remove_user(student.get_email())
