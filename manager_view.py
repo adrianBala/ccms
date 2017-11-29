@@ -80,8 +80,7 @@ class ManagerView():
         new_password = ' '
         retyped_new_password = ''
         while new_password != retyped_new_password:
-            if len(retyped_new_password) > 0:
-                print('\nTyped inputs are incorrects. Try again.')
+            if retyped_new_password != '': print('\nTyped inputs are incorrects. Try again.')
             new_password = getpass("Enter mentor's password: ")
             while len(new_password) == 0 or new_password.isspace():
                 print('\nWrong input. Enter at least one character.')
