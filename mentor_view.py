@@ -76,12 +76,20 @@ class MentorView():
         return telnumber
 
     def get_password(self):
-        user_input = input("Enter student's password: ")
-        while len(user_input) == 0 or user_input.isspace():
-            print('\nWrong input. Enter at least one character.')
-            user_input = input("Enter student's password: ")
+        new_password = ' '
+        retyped_new_password = ''
+        while new_password != retyped_new_password:
+            if retyped_new_password != '': print('\nTyped inputs are incorrects. Try again.')
+            new_password = getpass("Enter student's password: ")
+            while len(new_password) == 0 or new_password.isspace():
+                print('\nWrong input. Enter at least one character.')
+                new_password = getpass("Enter student's password: ")
+            retyped_new_password = getpass("Retype student's password: ")
+            while len(retyped_new_password) == 0 or retyped_new_password.isspace():
+                print('\nWrong input. Enter at least one character.')
+                retyped_new_password = getpass("Retype student's password: ")
 
-        return user_input
+        return new_password
 
     def get_students_class(self):
         students_class = input("Enter student's class: ")
