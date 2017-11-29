@@ -97,6 +97,12 @@ class MentorView():
             my_table.add_row(user)
         print(my_table)
 
+    def display_assignments(self, collection):
+        my_table = PrettyTable(["No.", "NAME", "URL", "GRADE"])
+        for assignment in collection:
+            my_table.add_row(assignment)
+        print(my_table)
+
     def get_student_number(self, student_list_length):
         correct_choices = [str(n) for n in range(1, student_list_length + 1)]
         user_input = input("Choose student (by number): ")
