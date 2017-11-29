@@ -1,7 +1,7 @@
 import re
 import string
 from prettytable import PrettyTable
-
+from getpass import getpass
 
 class ManagerView():
 
@@ -77,12 +77,21 @@ class ManagerView():
         return telnumber
 
     def get_password(self):
-        user_input = input("Enter mentor's password: ")
-        while len(user_input) == 0 or user_input.isspace():
-            print('\nWrong input. Enter at least one character.')
-            user_input = input("Enter mentor's password: ")
+        new_password = ' '
+        retyped_new_password = ''
+        while new_password != retyped_new_password:
+            if len(retyped_new_password) > 0:
+                print('\nTyped inputs are incorrects. Try again.')
+            new_password = getpass("Enter mentor's password: ")
+            while len(new_password) == 0 or new_password.isspace():
+                print('\nWrong input. Enter at least one character.')
+                new_password = getpass("Enter mentor's password: ")
+            retyped_new_password = getpass("Retype mentor's password: ")
+            while len(retyped_new_password) == 0 or retyped_new_password.isspace():
+                print('\nWrong input. Enter at least one character.')
+                retyped_new_password = getpass("Retype mentor's password: ")
 
-        return user_input
+        return new_password
 
     def display_list(self, collection):
         length_collection_element = 5
