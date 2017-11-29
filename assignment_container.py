@@ -6,7 +6,7 @@ class AssignmentContainer():
     def get_assignments(self):
         return self.assignments
 
-    def get_assignment_of_student(self, email):
+    def get_assignments_of_student(self, email):
         assignments_of_student = []
         for assignment in self.assignments:
             if assignment.get_email() == email:
