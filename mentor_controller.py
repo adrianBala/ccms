@@ -144,7 +144,20 @@ class MentorController():
         self.view.display_assignments(assignments_data_collection)
 
     def grade_assignment(self):
-        pass
+        self.list_students()
+
+        students = self.get_student_container().get_all_students()
+        student_index = int(self.view.get_student_number(len(students))) - 1
+        student = students[student_index]
+        email = student.get_email()
+        student_assignments = self.get_assignment_container().get_assignments_of_student(email)
+        self.list_student_assignments(email)
+        assignment_index = int(self.view.get_assignment_number(len(student_assignments))) - 1
+        assignment = student_assignments[assignment_index]
+        self.view.display_message('Assignment url: {}'.format(assignment.get_url()))
+        grade = self.view.get_grade()
+        assignment.set_grade(grade)
+        self.assignment_dao.export_assignments(self.assignment_container.get_assignments())
 
     def check_attendance(self):
         pass
