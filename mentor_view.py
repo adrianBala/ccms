@@ -1,3 +1,4 @@
+import hashlib, uuid
 import re
 import string
 
@@ -48,7 +49,9 @@ class MentorView():
         students_password = self.get_password()
         students_class = self.get_students_class()
 
-        students_data = (students_name, students_surname, students_email, students_phone, students_password, students_class)
+        students_data = (students_name, students_surname, students_email,
+                         students_phone, self.hash_password(students_password), students_class)
+
         return students_data
 
     def get_name_or_surname(self, name_or_surname):
@@ -122,6 +125,11 @@ class MentorView():
             print("Available classes: {}".format(', '.join(class_names)))
             class_name = input('Select class: ')
         return class_name
+
+    def hash_password(self, password):
+        hashed_password = hashlib.sha512(password.encode('utf-8')).hexdigest()
+
+        return hashed_password
 
     def display_message(self, message):
         print('\n' + message + '\n')

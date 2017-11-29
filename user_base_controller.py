@@ -1,3 +1,5 @@
+import hashlib, uuid
+
 from user_base_container import UserBaseContainer
 from user_base_dao import UserBaseDao
 from user_base_model import UserBase
@@ -18,7 +20,11 @@ class UserBaseController():
         return self.container
 
     def validate_password(self, email, password, user_email, user_password):
-        return email == user_email and password == user_password
+        if len(password) > 50:
+            hashed_user_password = self.hash_password(user_password)
+            return email == user_email and password == hashed_user_password
+        else:
+            return email == user_email and password == user_password
 
     def sign_in(self):
         login_info = self.dao.import_login_info()
@@ -28,9 +34,13 @@ class UserBaseController():
         while not signed_in:
             user_email = self.view.get_email()
             user_password = self.view.get_password()
-
             for row in self.container.get_login_info():
                 email, password, status = row
                 if self.validate_password(email, password, user_email, user_password):
                     return email, status
             self.view.display_text('Access denied!')
+
+    def hash_password(self, password):
+        hashed_password = hashlib.sha512(password.encode('utf-8')).hexdigest()
+
+        return hashed_password
