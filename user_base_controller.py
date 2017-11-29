@@ -38,6 +38,7 @@ class UserBaseController():
                 email, password, status = row
                 if self.validate_password(email, password, user_email, user_password):
                     return email, status
+
             self.view.display_text('Access denied!')
 
     def hash_password(self, password):
