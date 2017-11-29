@@ -25,7 +25,7 @@ class StudentView():
     def display_goodbye_message(self):
         print('\nGoodbye!')
 
-    def display_grades(self, collection):
+    def display_assignments(self, collection):
         my_table = PrettyTable(["No.", "NAME", "URL", "GRADE"])
         for assignment in collection:
             my_table.add_row(assignment)

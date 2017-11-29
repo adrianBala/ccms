@@ -34,7 +34,7 @@ class StudentController():
         return assignments_data_collection
 
     def view_grades(self):
-        self.view.display_grades(self.list_student_assignments())
+        self.view.display_assignments(self.list_student_assignments())
 
     def submit_assignment(self):
         pass
