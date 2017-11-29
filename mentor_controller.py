@@ -38,8 +38,9 @@ class MentorController():
 
     def add_student(self):
         students_data = self.view.get_students_data()
+        attendance = ''
 
-        student = self.student_dao.create_student(*students_data)
+        student = self.student_dao.create_student(*students_data, attendance)
         self.get_student_container().add_student(student, student.get_class_name())
         students = self.get_student_container().get_students()
         self.student_dao.export_students(students)
@@ -116,7 +117,17 @@ class MentorController():
         pass
 
     def check_attendance(self):
-        pass
+        class_names = self.get_student_container().get_class_names()
+        class_name = self.view.get_class_name(class_names)
+        self.list_students(class_name)
+
+        students_of_class = self.get_student_container().get_students_of_class(class_name)
+        for student in students_of_class:
+            name = student.get_name()
+            surname = student.get_surname()
+            is_attendance = self.view.get_attendance(name, surname)
+            student.set_attendance(is_attendance)
+        self.student_dao.export_students(self.get_student_container().get_students())
 
     def run(self):
         self.view.display_welcome_message()
