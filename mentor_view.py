@@ -17,6 +17,7 @@ class MentorView():
                    '(5) Add assignment',
                    '(6) Grade assignment',
                    '(7) Check attendance',
+                   '(8) Check attendance of class',
                    '(0) Exit CcMS')
         for option in options:
             print('\t' + option)
