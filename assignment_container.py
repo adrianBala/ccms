@@ -3,6 +3,9 @@ class AssignmentContainer():
     def __init__(self):
         self.assignments = []
 
+    def get_assignments(self):
+        return self.assignments
+
     def get_assignment(self, index):
         return self.assignments[index]
 
