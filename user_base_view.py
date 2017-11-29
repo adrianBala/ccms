@@ -1,3 +1,5 @@
+from getpass import getpass
+
 class UserBaseView():
 
     def get_email(self):
@@ -5,7 +7,7 @@ class UserBaseView():
         return user_email
 
     def get_password(self):
-        user_password = input('Enter password: ')
+        user_password = getpass('Enter password: ')
         return user_password
 
     def display_text(self, text):
