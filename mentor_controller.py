@@ -127,7 +127,9 @@ class MentorController():
             surname = student.get_surname()
             is_attendance = self.view.get_attendance(name, surname)
             student.set_attendance(is_attendance)
-        self.student_dao.export_students(self.get_student_container().get_students())
+            self.student_dao.export_students(self.get_student_container().get_students())
+            attendance_vlaue = student.get_avarage_attendance()
+            self.view.display_attendance_value(name, surname, attendance_vlaue)
 
     def run(self):
         self.view.display_welcome_message()
