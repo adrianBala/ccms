@@ -18,6 +18,9 @@ class Assignment():
     def get_grade(self):
         return self.grade
 
+    def get_all_details(self):
+        return [self.email, self.name, self.url, self.grade]
+
     def set_url(self, url):
         self.url = url
 
