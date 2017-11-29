@@ -1,5 +1,6 @@
 from getpass import getpass
 
+
 class UserBaseView():
 
     def get_email(self):
