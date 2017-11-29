@@ -68,7 +68,7 @@ class MentorView():
 
     def get_tel_number(self):
         valid_chars = string.digits + '+()-'
-        telnumber = input("Enter mentor's phone: ")
+        telnumber = input("Enter student's phone: ")
         while not all(x in valid_chars for x in telnumber) or sum(c.isdigit() for c in telnumber) < 9:
             print('\nWrong input. Enter digits and "+()-".')
             telnumber = input("Enter mentor's phone: ")
