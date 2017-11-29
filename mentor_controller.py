@@ -22,8 +22,11 @@ class MentorController():
             self.student_container.set_students(students)
         return self.student_container
 
-    def list_students(self):
-        students = self.get_student_container().get_all_students()
+    def list_students(self, class_name=None):
+        if class_name:
+            students = self.get_student_container().get_students_of_class(class_name)
+        else:
+            students = self.get_student_container().get_all_students()
 
         students_data_collection = []
         for count, student in enumerate(students, 1):
@@ -48,15 +51,14 @@ class MentorController():
         self.view.display_message("Student added!")
 
     def remove_student(self):
-        self.list_students()
-
-        students = self.get_student_container().get_students()
         class_names = self.get_student_container().get_class_names()
         class_name = self.view.get_class_name(class_names)
-        student_list_length = self.get_student_container().get_students_of_class(class_name)
-        index = int(self.view.get_student_number(student_list_length)) - 1
+
+        students_of_class = self.get_student_container().get_students_of_class(class_name)
+        self.list_students(class_name)
+        index = int(self.view.get_student_number(len(students_of_class))) - 1
         student = self.get_student_container().pop_student(class_name, index)
-        self.student_dao.export_students(students)
+        self.student_dao.export_students(self.get_student_container().get_students())
 
         self.user_base_container.remove_user(student.get_email())
         login_info = self.user_base_container.get_login_info()
