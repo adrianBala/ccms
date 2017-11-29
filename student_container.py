@@ -29,3 +29,6 @@ class StudentContainer():
 
     def pop_student(self, class_name, index):
         return self.students[class_name].pop(index)
+
+    def remove_student(self, student, class_name):
+        self.students[class_name].remove(student)
