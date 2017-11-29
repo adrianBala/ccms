@@ -6,6 +6,9 @@ class AssignmentContainer():
     def get_assignment(self, index):
         return self.assignments[index]
 
+    def set_assignments(self, assignments):
+        self.assignments = assignments
+
     def add_assignment(self, assignment):
         self.assignments.append(assignment)
 
