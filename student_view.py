@@ -38,3 +38,10 @@ class StudentView():
             print('Wrong input!')
             user_input = input("Choose assignment (by number): ")
         return user_input
+
+    def get_url(self):
+        user_input = input("Enter url: ")
+        while len(user_input) == 0 or user_input.isspace():
+            print('\nWrong input. Enter at least one character.')
+            user_input = input("Enter url: ")
+        return user_input
