@@ -13,4 +13,3 @@ class AssignmentContainer():
         for assignment in self.assignments:
             if assignment.get_email() == email:
                 self.assignments.remove(assignment)
-                break
