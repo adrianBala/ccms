@@ -5,3 +5,6 @@ class Assignment():
         self.name = name
         self.url = url
         self.grade = grade
+
+    def get_name(self):
+        return self.name
