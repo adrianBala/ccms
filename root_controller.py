@@ -23,6 +23,6 @@ class RootController():
         elif status == 'regular_employee':
             self.controller = RegularEmployeeController()
         elif status == 'student':
-            self.controller = StudentController()
+            self.controller = StudentController(email)
 
         self.controller.run()
