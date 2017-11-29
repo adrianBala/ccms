@@ -13,7 +13,6 @@ class MentorController():
         self.view = MentorView()
         self.student_dao = StudentDao()
         self.assignment_dao = AssignmentDao()
-        self.assignment_container = AssignmentContainer()
         self.user_base_dao = user_base_dao
         self.user_base_container = user_base_container
 
@@ -25,6 +24,15 @@ class MentorController():
             students = self.student_dao.import_students()
             self.student_container.set_students(students)
         return self.student_container
+
+    def get_assignment_container(self):
+        try:
+            return self.assignment_container
+        except AttributeError:
+            self.assignment_container = AssignmentContainer()
+            assignments = self.assignment_dao.import_assignments()
+            self.assignment_container.set_assignments(assignments)
+        return self.assignment_container
 
     def list_students(self, class_name=None):
         if class_name:
@@ -115,16 +123,13 @@ class MentorController():
         self.view.display_message("Student\'s data has been updated!")
 
     def add_assignment(self):
-        assignments = self.assignment_dao.import_assignments()
-        self.assignment_container.set_assignments(assignments)
-
         class_name = self.view.get_class_name(self.get_student_container().get_class_names())
         assignment_name = self.view.get_assignment_name()
 
         students = self.get_student_container().get_students_of_class(class_name)
         for student in students:
             assignment = self.assignment_dao.create_assignment(student.get_email(), assignment_name)
-            self.assignment_container.add_assignment(assignment)
+            self.get_assignment_container().add_assignment(assignment)
         self.assignment_dao.export_assignments(self.assignment_container.get_assignments())
 
     def grade_assignment(self):
