@@ -132,6 +132,17 @@ class MentorController():
             self.get_assignment_container().add_assignment(assignment)
         self.assignment_dao.export_assignments(self.assignment_container.get_assignments())
 
+    def list_student_assignments(self, email):
+        assignments_data_collection = []
+
+        student_assignments = self.get_assignment_container().get_assignments_of_student(email)
+        for count, assignment in enumerate(student_assignments, 1):
+            assignment_data = [count, assignment.get_name(), assignment.get_url(),
+                               assignment.get_grade()]
+            assignments_data_collection.append(assignment_data)
+
+        self.view.display_assignments(assignments_data_collection)
+
     def grade_assignment(self):
         pass
 
