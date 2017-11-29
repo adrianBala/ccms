@@ -13,7 +13,6 @@ class MentorController():
         self.view = MentorView()
         self.student_dao = StudentDao()
         self.assignment_dao = AssignmentDao()
-        self.assignment_container = AssignmentContainer()
         self.user_base_dao = user_base_dao
         self.user_base_container = user_base_container
 
@@ -26,11 +25,21 @@ class MentorController():
             self.student_container.set_students(students)
         return self.student_container
 
+    def get_assignment_container(self):
+        try:
+            return self.assignment_container
+        except AttributeError:
+            self.assignment_container = AssignmentContainer()
+            assignments = self.assignment_dao.import_assignments()
+            self.assignment_container.set_assignments(assignments)
+        return self.assignment_container
+
     def list_students(self, class_name=None):
         if class_name:
             students = self.get_student_container().get_students_of_class(class_name)
         else:
             students = self.get_student_container().get_all_students()
+        students.sort(key=lambda student: student.get_class_name())
 
         students_data_collection = []
         for count, student in enumerate(students, 1):
@@ -115,20 +124,41 @@ class MentorController():
         self.view.display_message("Student\'s data has been updated!")
 
     def add_assignment(self):
-        assignments = self.assignment_dao.import_assignments()
-        self.assignment_container.set_assignments(assignments)
-
         class_name = self.view.get_class_name(self.get_student_container().get_class_names())
         assignment_name = self.view.get_assignment_name()
 
         students = self.get_student_container().get_students_of_class(class_name)
         for student in students:
             assignment = self.assignment_dao.create_assignment(student.get_email(), assignment_name)
-            self.assignment_container.add_assignment(assignment)
+            self.get_assignment_container().add_assignment(assignment)
         self.assignment_dao.export_assignments(self.assignment_container.get_assignments())
 
+    def list_student_assignments(self, email):
+        assignments_data_collection = []
+
+        student_assignments = self.get_assignment_container().get_assignments_of_student(email)
+        for count, assignment in enumerate(student_assignments, 1):
+            assignment_data = [count, assignment.get_name(), assignment.get_url(),
+                               assignment.get_grade()]
+            assignments_data_collection.append(assignment_data)
+
+        self.view.display_assignments(assignments_data_collection)
+
     def grade_assignment(self):
-        pass
+        self.list_students()
+
+        students = self.get_student_container().get_all_students()
+        student_index = int(self.view.get_student_number(len(students))) - 1
+        student = students[student_index]
+        email = student.get_email()
+        student_assignments = self.get_assignment_container().get_assignments_of_student(email)
+        self.list_student_assignments(email)
+        assignment_index = int(self.view.get_assignment_number(len(student_assignments))) - 1
+        assignment = student_assignments[assignment_index]
+        self.view.display_message('Assignment url: {}'.format(assignment.get_url()))
+        grade = self.view.get_grade()
+        assignment.set_grade(grade)
+        self.assignment_dao.export_assignments(self.assignment_container.get_assignments())
 
     def check_attendance(self):
         class_names = self.get_student_container().get_class_names()

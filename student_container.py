@@ -16,7 +16,7 @@ class StudentContainer():
         return self.students[class_name]
 
     def get_class_names(self):
-        return [key for key in self.students]
+        return sorted([key for key in self.students])
 
     def set_students(self, students):
         self.students = students
