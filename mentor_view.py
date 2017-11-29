@@ -88,7 +88,8 @@ class MentorView():
         while len(students_class) != 2 or not students_class[0].isdigit() or not students_class[1].isalpha():
             print('\nWrong input. Enter class in format: "XY", where "X" is a single digit and "Y" is a single letter.')
             students_class = input("Enter student's class: ")
-            print('\nWrong input. Enter class in format: "XY", where "X" is a single digit and "Y" is a single letter.')
+
+        return students_class[0] + students_class[1].lower()
 
     def display_list(self, collection):
         my_table = PrettyTable(["No.", "NAME", "SURNAME", "E-MAIL", "PHONE", "CLASS"])
