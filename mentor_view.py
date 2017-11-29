@@ -1,5 +1,6 @@
 import re
 import string
+
 from prettytable import PrettyTable
 
 
@@ -75,19 +76,21 @@ class MentorView():
 
         return telnumber
 
+    def create_password(self, txt):
+        new_password = getpass(txt)
+        while len(new_password) == 0 or new_password.isspace():
+            print('\nWrong input. Enter at least one character.')
+            new_password = getpass(txt)
+
+        return new_password
+
     def get_password(self):
-        new_password = ' '
-        retyped_new_password = ''
+        new_password = self.create_password("Enter student's password: ")
+        retyped_new_password = self.create_password("Retype students's password: ")
         while new_password != retyped_new_password:
-            if retyped_new_password != '': print('\nTyped inputs are incorrects. Try again.')
-            new_password = getpass("Enter student's password: ")
-            while len(new_password) == 0 or new_password.isspace():
-                print('\nWrong input. Enter at least one character.')
-                new_password = getpass("Enter student's password: ")
-            retyped_new_password = getpass("Retype student's password: ")
-            while len(retyped_new_password) == 0 or retyped_new_password.isspace():
-                print('\nWrong input. Enter at least one character.')
-                retyped_new_password = getpass("Retype student's password: ")
+            print('\nTyped inputs are incorrects. Try again.')
+            new_password = self.create_password("Enter student's password: ")
+            retyped_new_password = self.create_password("Retype student's password: ")
 
         return new_password
 
