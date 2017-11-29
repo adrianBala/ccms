@@ -1,4 +1,10 @@
-student,student,student@gmail.com,123456,haslo,1a
-piotr,piotr,piotr@cc.com,111111,mango,1b
-adam,adam,adam@cc.com,222222,mango,2a
-michal,michal,michal@cc.com,333333,mango,2b
+aa,aa,aa@cc.com,123456789,aa,1b,1111
+piotr,piotr,piotr@cc.com,111111,mango,1b,112
+michal,michal,michal@cc.com,333333,mango,2b,111110
+adam,adam,adam@cc.com,222222,mango,2b,1100
+aa,bb,aa@cc.com,1234,1234,2b,0002
+ss,cc,ss@cc.com,123456789,aa,2b,2120
+abc,aaa,aaa@cc.com,123456789,aaa,2b,1111
+seb,ha,ha@cc.com,123456789,1234,1a,
+student,student,student@gmail.com,123456,haslo,1a,
+xxx,xxx,xxx@cc.com,123456789,xxx,2a,1111

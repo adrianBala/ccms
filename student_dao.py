@@ -7,8 +7,8 @@ class StudentDao():
 
     students_file = 'students.csv'
 
-    def create_student(self, name, surname, email, phone, password, class_name):
-        return Student(name, surname, email, phone, password, class_name)
+    def create_student(self, name, surname, email, phone, password, class_name, attendance):
+        return Student(name, surname, email, phone, password, class_name, attendance)
 
     def import_students(self):
         students = {}
