@@ -1,6 +1,6 @@
 class Assignment():
 
-    def __init__(self, email, name, url=None, grade=None):
+    def __init__(self, email, name, url='', grade=''):
         self.email = email
         self.name = name
         self.url = url
