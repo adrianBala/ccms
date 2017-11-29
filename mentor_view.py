@@ -116,7 +116,7 @@ class MentorView():
         attendance = None
         while attendance not in ['Y', 'N', 'L']:
             print('Is {} {} with us?'.format(name, surname))
-            attendance = input('Enter Yes or No(Y/N/L): ').upper()
+            attendance = input('Enter Yes, No, Late (Y/N/L): ').upper()
         if attendance == 'Y':
             return 'persence'
         elif attendance == 'N':
