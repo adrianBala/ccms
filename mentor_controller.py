@@ -134,7 +134,6 @@ class MentorController():
     def check_attendance_of_class(self):
         class_names = self.get_student_container().get_class_names()
         class_name = self.view.get_class_name(class_names)
-        self.list_students(class_name)
 
         students_of_class = self.get_student_container().get_students_of_class(class_name)
         for student in students_of_class:
