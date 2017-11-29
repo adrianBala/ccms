@@ -145,6 +145,17 @@ class MentorController():
             attendance_vlaue = student.get_avarage_attendance()
             self.view.display_attendance_value(name, surname, attendance_vlaue)
 
+    def check_attendance_of_class(self):
+        class_names = self.get_student_container().get_class_names()
+        class_name = self.view.get_class_name(class_names)
+
+        students_of_class = self.get_student_container().get_students_of_class(class_name)
+        for student in students_of_class:
+            name = student.get_name()
+            surname = student.get_surname()
+            attendance_vlaue = student.get_avarage_attendance()
+            self.view.display_attendance_value(name, surname, attendance_vlaue)
+
     def run(self):
         self.view.display_welcome_message()
 
@@ -167,5 +178,7 @@ class MentorController():
                 self.grade_assignment()
             elif menu_option == '7':
                 self.check_attendance()
+            elif menu_option == '8':
+                self.check_attendance_of_class()
 
         self.view.display_goodbye_message()
