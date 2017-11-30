@@ -1,4 +1,5 @@
-import hashlib, uuid
+import hashlib
+import uuid
 
 from user_base_container import UserBaseContainer
 from user_base_dao import UserBaseDao
@@ -20,12 +21,9 @@ class UserBaseController():
         return self.container
 
     def validate_password(self, email, password, user_email, user_password):
-        if len(password) > 50:
-            hashed_user_password = self.hash_password(user_password)
-            return email == user_email and password == hashed_user_password
-        else:
-            return email == user_email and password == user_password
-
+        hashed_user_password = self.hash_password(user_password)
+        return email == user_email and password == hashed_user_password
+        
     def sign_in(self):
         login_info = self.dao.import_login_info()
         self.container.set_login_info(login_info)
