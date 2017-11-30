@@ -53,12 +53,17 @@ class StudentController():
 
         menu_option = None
         while menu_option != '0':
+            os.system('clear')
             self.view.display_students_menu()
             menu_option = self.view.get_menu_option()
 
             if menu_option == '1':
+                os.system('clear')
                 self.view_grades()
+                self.view.display_continue_key()
             elif menu_option == '2':
+                os.system('clear')
                 self.submit_assignment()
+
 
         self.view.display_goodbye_message()

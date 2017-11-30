@@ -47,3 +47,6 @@ class StudentView():
             print('\nWrong input. Enter at least one character.')
             user_input = input("Enter url: ")
         return user_input
+
+    def display_continue_key(self):
+        return input('Press Enter to continue')
