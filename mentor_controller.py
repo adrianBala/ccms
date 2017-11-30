@@ -78,6 +78,9 @@ class MentorController():
         login_info = self.user_base_container.get_login_info()
         self.user_base_dao.export_login_info(login_info)
 
+        self.get_assignment_container().remove_assignments(student.get_email())
+        self.assignment_dao.export_assignments(self.assignment_container.get_assignments())
+
         self.view.display_message("Student removed!")
 
     def edit_student(self):
