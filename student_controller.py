@@ -39,7 +39,10 @@ class StudentController():
     def submit_assignment(self):
         assignments = self.get_assignment_container().get_assignments_of_student(self.email)
         self.view.display_assignments(self.list_student_assignments())
-        assignment_number = int(self.view.get_assignment_number(len(assignments))) - 1
+        try:
+            assignment_index = int(self.view.get_assignment_number(len(assignments))) - 1
+        except TypeError:
+            return None
         assignment = assignments[assignment_number]
         url = self.view.get_url()
         assignment.set_url(url)
