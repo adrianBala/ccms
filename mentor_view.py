@@ -113,6 +113,12 @@ class MentorView():
             my_table.add_row(user)
         print(my_table)
 
+    def display_assignments(self, collection):
+        my_table = PrettyTable(["No.", "NAME", "URL", "GRADE"])
+        for assignment in collection:
+            my_table.add_row(assignment)
+        print(my_table)
+
     def get_student_number(self, student_list_length):
         correct_choices = [str(n) for n in range(1, student_list_length + 1)]
         user_input = input("Choose student (by number): ")
@@ -120,6 +126,23 @@ class MentorView():
             print('Wrong input!')
             user_input = input("Choose student (by number): ")
         return user_input
+
+    def get_assignment_number(self, assignment_list_length):
+        correct_choices = [str(n) for n in range(1, assignment_list_length + 1)]
+        user_input = input("Choose assignment (by number): ")
+        while user_input not in correct_choices:
+            print('Wrong input!')
+            user_input = input("Choose assignment (by number): ")
+        return user_input
+
+    def get_grade(self):
+        correct_grades = ('-3', '0', '4', '7', '10', '12')
+        grade = None
+        grade = input("Grade assignment: ")
+        while grade not in correct_grades:
+            print('Wrong grade! Enter one of {}'.format(','.join(correct_grades)))
+            grade = input("Grade assignment: ")
+        return grade
 
     def get_class_name(self, class_names):
         class_name = ''

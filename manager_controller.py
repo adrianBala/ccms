@@ -45,6 +45,7 @@ class ManagerController():
 
     def list_students(self):
         students = self.get_student_container().get_all_students()
+        students.sort(key=lambda student: student.get_class_name())
 
         students_data_collection = []
         for count, student in enumerate(students, 1):
