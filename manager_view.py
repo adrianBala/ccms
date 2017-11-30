@@ -101,8 +101,11 @@ class ManagerView():
 
     def display_list(self, collection):
         length_collection_element = 5
-        if len(collection[0]) == length_collection_element:
-            my_table = PrettyTable(["No.", "NAME", "SURNAME", "E-MAIL", "PHONE"])
+        try:
+            if len(collection[0]) == length_collection_element:
+                my_table = PrettyTable(["No.", "NAME", "SURNAME", "E-MAIL", "PHONE"])
+        except IndexError:
+            return print('You have no mentors yet ;(')
         else:
             my_table = PrettyTable(["No.", "NAME", "SURNAME", "E-MAIL", "PHONE", "CLASS"])
 
