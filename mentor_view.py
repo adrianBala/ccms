@@ -4,15 +4,13 @@ import string
 
 from getpass import getpass
 from prettytable import PrettyTable
-from user_base_container import UserBaseContainer
-from user_base_dao import UserBaseDao
+from user_base_controller import UserBaseController
 
 
 class MentorView():
 
     def __init__(self):
-        self.container = UserBaseContainer()
-        self.dao = UserBaseDao()
+        self.ubc = UserBaseController()
 
     def display_welcome_message(self):
         print('\nWelcome!')
@@ -185,15 +183,13 @@ class MentorView():
         print('\nGoodbye!')
 
     def get_checked_email(self):
-        login_info = self.dao.import_login_info()
-        self.container.set_login_info(login_info)
+        existing_emails = self.ubc.get_existing_emails()
 
-        email_index = 0
-        checked_emails_data = False
         email = self.get_email()
+        checked_emails_data = False
         while not checked_emails_data:
-            for element in login_info:
-                if email == element[email_index]:
+            for existing_email in existing_emails:
+                if email == existing_email:
                     print('\nEmail already exist. Try a new one.')
                     self.get_email()
                     continue
