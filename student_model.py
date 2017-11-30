@@ -25,5 +25,8 @@ class Student(UserBase):
         full_attendance = len(self.attendance)
         current_attendance = self.attendance.count('1')
         attendance_but_late = self.attendance.count('2')
-        attendance_value = ((current_attendance + attendance_but_late * 0.8) / full_attendance) * 100
+        try:
+            attendance_value = ((current_attendance + attendance_but_late * 0.8) / full_attendance) * 100
+        except ZeroDivisionError:
+            attendance_value = 0
         return round(attendance_value, 2)
