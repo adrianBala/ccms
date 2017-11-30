@@ -104,10 +104,11 @@ class ManagerView():
         try:
             if len(collection[0]) == length_collection_element:
                 my_table = PrettyTable(["No.", "NAME", "SURNAME", "E-MAIL", "PHONE"])
+            else:
+                my_table = PrettyTable(["No.", "NAME", "SURNAME", "E-MAIL", "PHONE", "CLASS"])
         except IndexError:
-            return print('You have no mentors yet ;(')
-        else:
-            my_table = PrettyTable(["No.", "NAME", "SURNAME", "E-MAIL", "PHONE", "CLASS"])
+            return print("I'm sorry but You are alone yet ;(")
+
 
         for user in collection:
             my_table.add_row(user)
