@@ -1,3 +1,5 @@
+import os
+
 from manager_view import ManagerView
 from mentor_container import MentorContainer
 from mentor_dao import MentorDao
@@ -92,6 +94,7 @@ class ManagerController():
 
         menu_option = None
         while menu_option != '0':
+            os.system('clear')
             self.view.display_edit_mentor_menu()
             menu_option = self.view.get_menu_option()
 
@@ -124,18 +127,25 @@ class ManagerController():
 
         menu_option = None
         while menu_option != '0':
+            self.view.display_continue_key()
+            os.system('clear')
             self.view.display_managers_menu()
             menu_option = self.view.get_menu_option()
 
             if menu_option == '1':
+                os.system('clear')
                 self.list_mentors()
             elif menu_option == '2':
+                os.system('clear')
                 self.list_students()
             elif menu_option == '3':
+                os.system('clear')
                 self.add_mentor()
             elif menu_option == '4':
+                os.system('clear')
                 self.remove_mentor()
             elif menu_option == '5':
+                os.system('clear')
                 self.edit_mentor()
 
         self.view.display_goodbye_message()
