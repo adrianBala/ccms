@@ -37,10 +37,13 @@ class RegularEmployeeController():
 
         menu_option = None
         while menu_option != '0':
+            os.system('clear')
             self.view.display_employees_menu()
             menu_option = self.view.get_menu_option()
 
             if menu_option == '1':
+                os.system('clear')
                 self.list_students()
+                self.view.display_continue_key()
 
         self.view.display_goodbye_message()
