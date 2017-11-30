@@ -130,16 +130,15 @@ class MentorView():
     def get_assignment_number(self, assignment_list_length):
         correct_choices = [str(n) for n in range(1, assignment_list_length + 1)]
         user_input = input("Choose assignment (by number) or E to exit: ")
-        if user_input.lower() == "e":
-            return None
-        while user_input not in correct_choices:
+        while user_input not in correct_choices and user_input.lower() != "e":
             print('Wrong input!')
             user_input = input("Choose assignment (by number): ")
+        if user_input.lower() == "e":
+            return None
         return user_input
 
     def get_grade(self):
         correct_grades = ('-3', '0', '4', '7', '10', '12')
-        grade = None
         grade = input("Grade assignment: ")
         while grade not in correct_grades:
             print('Wrong grade! Enter one of {}'.format(','.join(correct_grades)))
