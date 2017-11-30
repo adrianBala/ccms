@@ -17,19 +17,6 @@ class MentorController():
         self.user_base_dao = user_base_dao
         self.user_base_container = user_base_container
 
-    def get_students_data(self):
-        students_name = self.view.get_name_or_surname('name')
-        students_surname = self.view.get_name_or_surname('surname')
-        students_email = self.view.get_email()
-        students_phone = self.view.get_tel_number()
-        students_password = self.view.get_password()
-        students_class = self.view.get_students_class()
-
-        students_data = (students_name, students_surname, students_email,
-                         students_phone, self.hash_password(students_password), students_class)
-
-        return students_data
-
     def get_student_container(self):
         try:
             return self.student_container
@@ -47,6 +34,19 @@ class MentorController():
             assignments = self.assignment_dao.import_assignments()
             self.assignment_container.set_assignments(assignments)
         return self.assignment_container
+
+        def get_students_data(self):
+            students_name = self.view.get_name_or_surname('name')
+            students_surname = self.view.get_name_or_surname('surname')
+            students_email = self.view.get_email()
+            students_phone = self.view.get_tel_number()
+            students_password = self.view.get_password()
+            students_class = self.view.get_students_class()
+
+            students_data = (students_name, students_surname, students_email,
+                             students_phone, self.hash_password(students_password), students_class)
+
+            return students_data
 
     def list_students(self, class_name=None):
         if class_name:

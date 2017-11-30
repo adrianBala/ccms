@@ -17,17 +17,6 @@ class ManagerController():
         self.user_base_dao = user_base_dao
         self.user_base_container = user_base_container
 
-    def get_mentors_data(self):
-        mentors_name = self.view.get_name_or_surname('name')
-        mentors_surname = self.view.get_name_or_surname('surname')
-        mentors_email = self.view.get_email()
-        mentors_phone = self.view.get_tel_number()
-        mentors_password = self.view.get_password()
-
-        mentors_data = (mentors_name, mentors_surname, mentors_email,
-                        mentors_phone, self.hash_password(mentors_password))
-        return mentors_data
-
     def get_mentor_container(self):
         try:
             return self.mentor_container
@@ -45,6 +34,17 @@ class ManagerController():
             students = self.student_dao.import_students()
             self.student_container.set_students(students)
         return self.student_container
+
+    def get_mentors_data(self):
+        mentors_name = self.view.get_name_or_surname('name')
+        mentors_surname = self.view.get_name_or_surname('surname')
+        mentors_email = self.view.get_email()
+        mentors_phone = self.view.get_tel_number()
+        mentors_password = self.view.get_password()
+
+        mentors_data = (mentors_name, mentors_surname, mentors_email,
+                        mentors_phone, self.hash_password(mentors_password))
+        return mentors_data
 
     def list_mentors(self):
         mentors = self.get_mentor_container().get_mentors()
