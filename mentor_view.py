@@ -180,3 +180,6 @@ class MentorView():
 
     def display_goodbye_message(self):
         print('\nGoodbye!')
+
+    def display_continue_key(self):
+        return input('Press Enter to continue')

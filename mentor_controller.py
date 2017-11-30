@@ -92,6 +92,7 @@ class MentorController():
 
         menu_option = None
         while menu_option != '0':
+            os.system('clear')
             self.view.display_edit_student_menu()
             menu_option = self.view.get_menu_option()
 
@@ -209,24 +210,34 @@ class MentorController():
 
         menu_option = None
         while menu_option != '0':
+            self.view.display_continue_key()
+            os.system('clear')
             self.view.display_mentors_menu()
             menu_option = self.view.get_menu_option()
 
             if menu_option == '1':
+                os.system('clear')
                 self.list_students()
             elif menu_option == '2':
+                os.system('clear')
                 self.add_student()
             elif menu_option == '3':
+                os.system('clear')
                 self.remove_student()
             elif menu_option == '4':
+                os.system('clear')
                 self.edit_student()
             elif menu_option == '5':
+                os.system('clear')
                 self.add_assignment()
             elif menu_option == '6':
+                os.system('clear')
                 self.grade_assignment()
             elif menu_option == '7':
+                os.system('clear')
                 self.check_attendance()
             elif menu_option == '8':
+                os.system('clear')
                 self.check_attendance_of_class()
 
         self.view.display_goodbye_message()
