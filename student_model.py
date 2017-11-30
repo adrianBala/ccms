@@ -18,17 +18,16 @@ class Student(UserBase):
         self.class_name = new_class_name
 
     def set_attendance(self, student_attendance):
-        if student_attendance == 'persence':
-            self.attendance = self.attendance + '1'
-        elif student_attendance == 'late':
-            self.attendance = self.attendance + '2'
-        elif student_attendance == 'absence':
-            self.attendance = self.attendance + '0'
+        self.attendance = self.attendance + student_attendance
 
     def get_avarage_attendance(self):
         attendance_data = self.attendance
         full_attendance = len(self.attendance)
         current_attendance = self.attendance.count('1')
         attendance_but_late = self.attendance.count('2')
-        attendance_value = ((current_attendance + attendance_but_late * 0.8) / full_attendance) * 100
+        late_multiplier = 0.8
+        try:
+            attendance_value = ((current_attendance + attendance_but_late * late_multiplier) / full_attendance) * 100
+        except ZeroDivisionError:
+            attendance_value = 0
         return round(attendance_value, 2)
