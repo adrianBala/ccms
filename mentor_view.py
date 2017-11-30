@@ -137,19 +137,14 @@ class MentorView():
 
     def hash_password(self, password):
         hashed_password = hashlib.sha512(password.encode('utf-8')).hexdigest()
-
         return hashed_password
+
     def get_attendance(self, name, surname):
         attendance = None
         while attendance not in ['Y', 'N', 'L']:
             print('Is {} {} with us?'.format(name, surname))
             attendance = input('Enter Yes, No, Late (Y/N/L): ').upper()
-        if attendance == 'Y':
-            return 'persence'
-        elif attendance == 'N':
-            return 'absence'
-        elif attendance == 'L':
-            return 'late'
+        return attendance
 
     def display_attendance_value(self, name, surname, attendance_vlaue):
         return print('{} {} presence is: {}%'.format(name, surname, attendance_vlaue))
