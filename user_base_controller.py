@@ -23,7 +23,7 @@ class UserBaseController():
     def validate_password(self, email, password, user_email, user_password):
         hashed_user_password = self.hash_password(user_password)
         return email == user_email and password == hashed_user_password
-        
+
     def sign_in(self):
         login_info = self.dao.import_login_info()
         self.container.set_login_info(login_info)
@@ -43,3 +43,14 @@ class UserBaseController():
         hashed_password = hashlib.sha512(password.encode('utf-8')).hexdigest()
 
         return hashed_password
+
+    def get_existing_emails(self):
+        login_info = self.dao.import_login_info()
+        self.container.set_login_info(login_info)
+        existing_emails = []
+
+        email_index = 0
+        for row in self.container.get_login_info():
+            existing_emails.append(row[email_index])
+
+        return existing_emails    

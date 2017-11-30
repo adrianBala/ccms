@@ -6,6 +6,7 @@ from mentor_container import MentorContainer
 from mentor_dao import MentorDao
 from student_container import StudentContainer
 from student_dao import StudentDao
+from user_base_controller import UserBaseController
 
 
 class ManagerController():
@@ -16,6 +17,7 @@ class ManagerController():
         self.student_dao = StudentDao()
         self.user_base_dao = user_base_dao
         self.user_base_container = user_base_container
+        self.user_base_controller = UserBaseController()
 
     def get_mentor_container(self):
         try:
@@ -38,7 +40,7 @@ class ManagerController():
     def get_mentors_data(self):
         mentors_name = self.view.get_name_or_surname('name')
         mentors_surname = self.view.get_name_or_surname('surname')
-        mentors_email = self.view.get_email()
+        mentors_email = self.get_checked_email()
         mentors_phone = self.view.get_tel_number()
         mentors_password = self.view.get_password()
 
@@ -133,6 +135,21 @@ class ManagerController():
         self.user_base_dao.export_login_info(login_info)
 
         self.view.display_message("Mentor\'s data has been updated!")
+
+    def get_checked_email(self):
+        existing_emails = self.user_base_controller.get_existing_emails()
+        email = self.view.get_email()
+        checked_emails_data = False
+        while not checked_emails_data:
+            for existing_email in existing_emails:
+                if email == existing_email:
+                    print('\nEmail already exist. Try a new one.')
+                    self.view.get_email()
+                    continue
+
+            checked_emails_data = True
+
+        return email
 
     def hash_password(self, password):
         hashed_password = hashlib.sha512(password.encode('utf-8')).hexdigest()
