@@ -139,10 +139,12 @@ class MentorView():
 
     def get_grade(self):
         correct_grades = ('-3', '0', '4', '7', '10', '12')
-        grade = input("Grade assignment: ")
-        while grade not in correct_grades:
+        grade = input("Grade assignment or press E to exit: ")
+        while grade not in correct_grades and grade.lower() != 'e':
             print('Wrong grade! Enter one of {}'.format(','.join(correct_grades)))
-            grade = input("Grade assignment: ")
+            grade = input("Grade assignment or press E to exit: ")
+        if grade.lower() == 'e':
+            return ""
         return grade
 
     def get_class_name(self, class_names):
