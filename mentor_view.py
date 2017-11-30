@@ -146,8 +146,8 @@ class MentorView():
             attendance = input('Enter Yes, No, Late (Y/N/L): ').upper()
         return attendance
 
-    def display_attendance_value(self, name, surname, attendance_vlaue):
-        return print('{} {} presence is: {}%'.format(name, surname, attendance_vlaue))
+    def display_attendance_value(self, name, surname, attendance_value):
+        return print('{} {} presence is: {}%'.format(name, surname, attendance_value))
 
     def display_message(self, message):
         print('\n' + message + '\n')
