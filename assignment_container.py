@@ -24,3 +24,8 @@ class AssignmentContainer():
         for assignment in self.assignments:
             if assignment.get_email() == email:
                 self.assignments.remove(assignment)
+
+    def change_email(self, old_email, new_email):
+        for assignment in self.get_assignments():
+            if assignment.get_email() == old_email:
+                assignment.set_email(new_email)
