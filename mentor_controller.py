@@ -156,7 +156,10 @@ class MentorController():
         email = student.get_email()
         student_assignments = self.get_assignment_container().get_assignments_of_student(email)
         self.list_student_assignments(email)
-        assignment_index = int(self.view.get_assignment_number(len(student_assignments))) - 1
+        try:
+            assignment_index = int(self.view.get_assignment_number(len(student_assignments))) - 1
+        except TypeError:
+            return None
         assignment = student_assignments[assignment_index]
         self.view.display_message('Assignment url: {}'.format(assignment.get_url()))
         grade = self.view.get_grade()
