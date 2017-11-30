@@ -43,7 +43,7 @@ class StudentController():
             assignment_index = int(self.view.get_assignment_number(len(assignments))) - 1
         except TypeError:
             return None
-        assignment = assignments[assignment_number]
+        assignment = assignments[assignment_index]
         url = self.view.get_url()
         assignment.set_url(url)
         self.assignment_dao.export_assignments(self.assignment_container.get_assignments())
