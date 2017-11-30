@@ -160,7 +160,7 @@ What would you like to do:
 ~~~
 # Student's usage:
 
-'$python main.py'
+`$python main.py`
 ~~~
 Please provide a username:
 Student
