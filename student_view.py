@@ -1,3 +1,6 @@
+from prettytable import PrettyTable
+
+
 class StudentView():
 
     def display_welcome_message(self):
@@ -21,3 +24,24 @@ class StudentView():
 
     def display_goodbye_message(self):
         print('\nGoodbye!')
+
+    def display_assignments(self, collection):
+        my_table = PrettyTable(["No.", "NAME", "URL", "GRADE"])
+        for assignment in collection:
+            my_table.add_row(assignment)
+        print(my_table)
+
+    def get_assignment_number(self, assignment_list_length):
+        correct_choices = [str(n) for n in range(1, assignment_list_length + 1)]
+        user_input = input("Choose assignment (by number): ")
+        while user_input not in correct_choices:
+            print('Wrong input!')
+            user_input = input("Choose assignment (by number): ")
+        return user_input
+
+    def get_url(self):
+        user_input = input("Enter url: ")
+        while len(user_input) == 0 or user_input.isspace():
+            print('\nWrong input. Enter at least one character.')
+            user_input = input("Enter url: ")
+        return user_input
