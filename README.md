@@ -150,7 +150,7 @@ What would you like to do:
    (5) Edit mentor
    (0) Exit CcMS
 ~~~   
-'Option: 1'' 
+`Option: 1`
 ~~~
 /-------------------------\
 | Id  |   Name  | Surname |
