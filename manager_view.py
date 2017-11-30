@@ -4,9 +4,15 @@ import string
 
 from getpass import getpass
 from prettytable import PrettyTable
+from user_base_container import UserBaseContainer
+from user_base_dao import UserBaseDao
 
 
 class ManagerView():
+
+    def __init__(self):
+        self.container = UserBaseContainer()
+        self.dao = UserBaseDao()
 
     def display_welcome_message(self):
         print('\nWelcome!')
@@ -47,7 +53,7 @@ class ManagerView():
     def get_mentors_data(self):
         mentors_name = self.get_name_or_surname('name')
         mentors_surname = self.get_name_or_surname('surname')
-        mentors_email = self.get_email()
+        mentors_email = self.get_checked_email()
         mentors_phone = self.get_tel_number()
         mentors_password = self.get_password()
 
@@ -128,3 +134,21 @@ class ManagerView():
 
     def display_goodbye_message(self):
         print('\nGoodbye!')
+
+    def get_checked_email(self):
+        login_info = self.dao.import_login_info()
+        self.container.set_login_info(login_info)
+
+        email_index = 0
+        checked_emails_data = False
+        email = self.get_email()
+        while not checked_emails_data:
+            for element in login_info:
+                if email == element[email_index]:
+                    print('\nEmail already exist. Try a new one.')
+                    self.get_email()
+                    continue
+
+            checked_emails_data = True
+
+        return email
