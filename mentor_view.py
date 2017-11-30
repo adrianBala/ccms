@@ -129,7 +129,9 @@ class MentorView():
 
     def get_assignment_number(self, assignment_list_length):
         correct_choices = [str(n) for n in range(1, assignment_list_length + 1)]
-        user_input = input("Choose assignment (by number): ")
+        user_input = input("Choose assignment (by number) or E to exit: ")
+        if user_input.lower() == "e":
+            return None
         while user_input not in correct_choices:
             print('Wrong input!')
             user_input = input("Choose assignment (by number): ")
