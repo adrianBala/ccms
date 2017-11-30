@@ -135,7 +135,8 @@ Sample usage
 
 Jerry's usage:
 
-'$python main.py
+`$python main.py`
+~~~
 Please provide a username:
 Jerzy
 Please provide a password:
@@ -148,7 +149,8 @@ What would you like to do:
    (4) Remove mentor
    (5) Edit mentor
    (0) Exit CcMS
-Option: 1' 
+~~~   
+'Option: 1'' 
 ~~~
 /-------------------------\
 | Id  |   Name  | Surname |
