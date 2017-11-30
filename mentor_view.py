@@ -65,7 +65,7 @@ class MentorView():
 
     def get_email(self):
         email = input("Enter e-mail: ")
-        pattern = re.compile(r'[a-zA-Z0-9-_]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+')
+        pattern = re.compile(r'[a-zA-Z0-9-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+')
         while not pattern.match(email):
             print('\nWrong input. Enter email in format: "x@x.x".')
             email = input("Enter e-mail: ")
