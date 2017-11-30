@@ -1,4 +1,3 @@
-import hashlib, uuid
 import re
 import string
 
@@ -41,19 +40,6 @@ class MentorView():
     def get_menu_option(self):
         menu_option = input("Option: ")
         return menu_option
-
-    def get_students_data(self):
-        students_name = self.get_name_or_surname('name')
-        students_surname = self.get_name_or_surname('surname')
-        students_email = self.get_email()
-        students_phone = self.get_tel_number()
-        students_password = self.get_password()
-        students_class = self.get_students_class()
-
-        students_data = (students_name, students_surname, students_email,
-                         students_phone, self.hash_password(students_password), students_class)
-
-        return students_data
 
     def get_name_or_surname(self, name_or_surname):
         user_input = input("Enter student's {}: ".format(name_or_surname))

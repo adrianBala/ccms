@@ -44,17 +44,6 @@ class ManagerView():
 
         return menu_option
 
-    def get_mentors_data(self):
-        mentors_name = self.get_name_or_surname('name')
-        mentors_surname = self.get_name_or_surname('surname')
-        mentors_email = self.get_email()
-        mentors_phone = self.get_tel_number()
-        mentors_password = self.get_password()
-
-        mentors_data = (mentors_name, mentors_surname, mentors_email,
-                        mentors_phone, self.hash_password(mentors_password))
-        return mentors_data
-
     def get_name_or_surname(self, name_or_surname):
         user_input = input("Enter mentor's {}: ".format(name_or_surname))
         while len(user_input) == 0 or user_input.isspace():
@@ -120,11 +109,6 @@ class ManagerView():
             print('Wrong input!')
             user_input = input("Choose mentor (by number): ")
         return user_input
-
-    def hash_password(self, password):
-        hashed_password = hashlib.sha512(password.encode('utf-8')).hexdigest()
-
-        return hashed_password
 
     def display_message(self, message):
         print('\n' + message + '\n')

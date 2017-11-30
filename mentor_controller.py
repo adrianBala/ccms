@@ -1,3 +1,4 @@
+import hashlib, uuid
 import os
 
 from assignment_container import AssignmentContainer
@@ -15,6 +16,19 @@ class MentorController():
         self.assignment_dao = AssignmentDao()
         self.user_base_dao = user_base_dao
         self.user_base_container = user_base_container
+
+    def get_students_data(self):
+        students_name = self.view.get_name_or_surname('name')
+        students_surname = self.view.get_name_or_surname('surname')
+        students_email = self.view.get_email()
+        students_phone = self.view.get_tel_number()
+        students_password = self.view.get_password()
+        students_class = self.view.get_students_class()
+
+        students_data = (students_name, students_surname, students_email,
+                         students_phone, self.hash_password(students_password), students_class)
+
+        return students_data
 
     def get_student_container(self):
         try:
@@ -50,7 +64,7 @@ class MentorController():
         self.view.display_list(students_data_collection)
 
     def add_student(self):
-        students_data = self.view.get_students_data()
+        students_data = self.get_students_data()
         attendance = ''
 
         student = self.student_dao.create_student(*students_data, attendance)
@@ -204,6 +218,11 @@ class MentorController():
             surname = student.get_surname()
             attendance_value = student.get_avarage_attendance()
             self.view.display_attendance_value(name, surname, attendance_value)
+
+    def hash_password(self, password):
+        hashed_password = hashlib.sha512(password.encode('utf-8')).hexdigest()
+
+        return hashed_password
 
     def run(self):
         self.view.display_welcome_message()

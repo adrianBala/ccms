@@ -1,3 +1,4 @@
+import hashlib, uuid
 import os
 
 from manager_view import ManagerView
@@ -15,6 +16,17 @@ class ManagerController():
         self.student_dao = StudentDao()
         self.user_base_dao = user_base_dao
         self.user_base_container = user_base_container
+
+    def get_mentors_data(self):
+        mentors_name = self.view.get_name_or_surname('name')
+        mentors_surname = self.view.get_name_or_surname('surname')
+        mentors_email = self.view.get_email()
+        mentors_phone = self.view.get_tel_number()
+        mentors_password = self.view.get_password()
+
+        mentors_data = (mentors_name, mentors_surname, mentors_email,
+                        mentors_phone, self.hash_password(mentors_password))
+        return mentors_data
 
     def get_mentor_container(self):
         try:
@@ -58,7 +70,7 @@ class ManagerController():
         self.view.display_list(students_data_collection)
 
     def add_mentor(self):
-        mentors_data = self.view.get_mentors_data()
+        mentors_data = self.get_mentors_data()
 
         mentor = self.mentor_dao.create_mentor(*mentors_data)
         self.get_mentor_container().add_mentor(mentor)
@@ -121,6 +133,11 @@ class ManagerController():
         self.user_base_dao.export_login_info(login_info)
 
         self.view.display_message("Mentor\'s data has been updated!")
+
+    def hash_password(self, password):
+        hashed_password = hashlib.sha512(password.encode('utf-8')).hexdigest()
+
+        return hashed_password
 
     def run(self):
         self.view.display_welcome_message()
