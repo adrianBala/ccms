@@ -6,6 +6,7 @@ from assignment_dao import AssignmentDao
 from mentor_view import MentorView
 from student_container import StudentContainer
 from student_dao import StudentDao
+from user_base_controller import UserBaseController
 
 
 class MentorController():
@@ -16,6 +17,7 @@ class MentorController():
         self.assignment_dao = AssignmentDao()
         self.user_base_dao = user_base_dao
         self.user_base_container = user_base_container
+        self.user_base_controller = UserBaseController()
 
     def get_student_container(self):
         try:
@@ -35,18 +37,18 @@ class MentorController():
             self.assignment_container.set_assignments(assignments)
         return self.assignment_container
 
-        def get_students_data(self):
-            students_name = self.view.get_name_or_surname('name')
-            students_surname = self.view.get_name_or_surname('surname')
-            students_email = self.view.get_email()
-            students_phone = self.view.get_tel_number()
-            students_password = self.view.get_password()
-            students_class = self.view.get_students_class()
+    def get_students_data(self):
+        students_name = self.view.get_name_or_surname('name')
+        students_surname = self.view.get_name_or_surname('surname')
+        students_email = self.get_checked_email()
+        students_phone = self.view.get_tel_number()
+        students_password = self.view.get_password()
+        students_class = self.view.get_students_class()
 
-            students_data = (students_name, students_surname, students_email,
-                             students_phone, self.hash_password(students_password), students_class)
+        students_data = (students_name, students_surname, students_email,
+                         students_phone, self.hash_password(students_password), students_class)
 
-            return students_data
+        return students_data
 
     def list_students(self, class_name=None):
         if class_name:
@@ -218,6 +220,21 @@ class MentorController():
             surname = student.get_surname()
             attendance_value = student.get_avarage_attendance()
             self.view.display_attendance_value(name, surname, attendance_value)
+
+    def get_checked_email(self):
+        existing_emails = self.user_base_controller.get_existing_emails()
+        email = self.view.get_email()
+        checked_emails_data = False
+        while not checked_emails_data:
+            for existing_email in existing_emails:
+                if email == existing_email:
+                    print('\nEmail already exist. Try a new one.')
+                    self.view.get_email()
+                    continue
+
+            checked_emails_data = True
+
+        return email
 
     def hash_password(self, password):
         hashed_password = hashlib.sha512(password.encode('utf-8')).hexdigest()
