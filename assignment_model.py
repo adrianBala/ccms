@@ -26,3 +26,6 @@ class Assignment():
 
     def set_grade(self, grade):
         self.grade = grade
+
+    def set_email(self, email):
+        self.email = email

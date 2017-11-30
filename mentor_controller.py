@@ -102,8 +102,11 @@ class MentorController():
                 new_surname = self.view.get_name_or_surname('surname')
                 student.set_surname(new_surname)
             elif menu_option == '3':
-                new_email = self.view.get_students_email()
+                new_email = self.view.get_email()
+                old_email = student.get_email()
                 student.set_email(new_email)
+                self.get_assignment_container().change_email(old_email, new_email)
+                self.assignment_dao.export_assignments(self.get_assignment_container().get_assignments())
             elif menu_option == '4':
                 new_phone_number = self.view.get_tel_number()
                 student.set_phone_number(new_phone_number)
