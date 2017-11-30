@@ -1,6 +1,6 @@
 import csv
 
-from student_model import Student
+from model.student_model import Student
 
 
 class StudentDao():

@@ -1,4 +1,4 @@
-from root_controller import RootController
+from controller.root_controller import RootController
 
 
 class App():

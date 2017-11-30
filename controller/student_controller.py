@@ -1,9 +1,9 @@
 import os
 
-from assignment_container import AssignmentContainer
-from assignment_dao import AssignmentDao
-from student_container import StudentContainer
-from student_view import StudentView
+from container.assignment_container import AssignmentContainer
+from dao.assignment_dao import AssignmentDao
+from container.student_container import StudentContainer
+from view.student_view import StudentView
 
 
 class StudentController():

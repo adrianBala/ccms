@@ -1,4 +1,4 @@
-from user_base_model import UserBase
+from model.user_base_model import UserBase
 
 
 class Student(UserBase):

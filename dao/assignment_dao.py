@@ -1,6 +1,6 @@
 import csv
 
-from assignment_model import Assignment
+from model.assignment_model import Assignment
 
 
 class AssignmentDao():

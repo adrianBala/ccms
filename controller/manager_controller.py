@@ -1,12 +1,12 @@
 import hashlib, uuid
 import os
 
-from manager_view import ManagerView
-from mentor_container import MentorContainer
-from mentor_dao import MentorDao
-from student_container import StudentContainer
-from student_dao import StudentDao
-from user_base_controller import UserBaseController
+from view.manager_view import ManagerView
+from container.mentor_container import MentorContainer
+from dao.mentor_dao import MentorDao
+from container.student_container import StudentContainer
+from dao.student_dao import StudentDao
+from controller.user_base_controller import UserBaseController
 
 
 class ManagerController():
@@ -139,15 +139,17 @@ class ManagerController():
     def get_checked_email(self):
         existing_emails = self.user_base_controller.get_existing_emails()
         email = self.view.get_email()
+
         checked_emails_data = False
         while not checked_emails_data:
-            for existing_email in existing_emails:
+            for count, existing_email in enumerate(existing_emails):
                 if email == existing_email:
                     print('\nEmail already exist. Try a new one.')
-                    self.view.get_email()
-                    continue
+                    email = self.view.get_email()
+                    break
 
-            checked_emails_data = True
+                elif count == (len(existing_emails) - 1):
+                    checked_emails_data = True
 
         return email
 

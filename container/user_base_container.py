@@ -1,4 +1,4 @@
-from user_base_dao import UserBaseDao
+from dao.user_base_dao import UserBaseDao
 
 
 class UserBaseContainer():

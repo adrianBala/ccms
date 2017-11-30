@@ -1,5 +1,5 @@
 import csv
-from mentor_model import Mentor
+from model.mentor_model import Mentor
 
 
 class MentorDao():

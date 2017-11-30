@@ -1,10 +1,10 @@
 import hashlib
 import uuid
 
-from user_base_container import UserBaseContainer
-from user_base_dao import UserBaseDao
-from user_base_model import UserBase
-from user_base_view import UserBaseView
+from container.user_base_container import UserBaseContainer
+from dao.user_base_dao import UserBaseDao
+from model.user_base_model import UserBase
+from view.user_base_view import UserBaseView
 
 
 class UserBaseController():
@@ -53,4 +53,4 @@ class UserBaseController():
         for row in self.container.get_login_info():
             existing_emails.append(row[email_index])
 
-        return existing_emails    
+        return existing_emails
