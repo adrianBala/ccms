@@ -139,8 +139,14 @@ class MentorController():
         for student in students_of_class:
             name = student.get_name()
             surname = student.get_surname()
-            is_attendance = self.view.get_attendance(name, surname)
-            student.set_attendance(is_attendance)
+            student_attendance = self.view.get_attendance(name, surname)
+            if student_attendance == 'Y':
+                student_attendance_type = '1'
+            elif student_attendance == 'N':
+                student_attendance_type = '0'
+            elif student_attendance == 'L':
+                student_attendance_type = '2'
+            student.set_attendance(student_attendance_type)
             self.student_dao.export_students(self.get_student_container().get_students())
             attendance_vlaue = student.get_avarage_attendance()
             self.view.display_attendance_value(name, surname, attendance_vlaue)
