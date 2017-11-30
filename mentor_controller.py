@@ -140,12 +140,15 @@ class MentorController():
             name = student.get_name()
             surname = student.get_surname()
             student_attendance = self.view.get_attendance(name, surname)
+            late = '2'
+            absence = '0'
+            persence = '1'
             if student_attendance == 'Y':
-                student_attendance_type = '1'
+                student_attendance_type = persence
             elif student_attendance == 'N':
-                student_attendance_type = '0'
+                student_attendance_type = absence
             elif student_attendance == 'L':
-                student_attendance_type = '2'
+                student_attendance_type = late
             student.set_attendance(student_attendance_type)
             self.student_dao.export_students(self.get_student_container().get_students())
             attendance_value = student.get_avarage_attendance()
